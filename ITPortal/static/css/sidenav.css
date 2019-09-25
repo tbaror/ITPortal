@@ -1,47 +1,100 @@
-#navbar {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 20px;
-  font-family: Quicksand;
-  background: rgba(0, 0, 0, 0.8);
+/*Top navbar*/
+
+/* header */
+
+header {
+  height: 12vh;
+  background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .5));
 }
 
-#navbar {
-  width: 100%;
-  text-align: right;
-  height: 70%;
-  line-height: 70%;
-  background: rgba(0, 0, 0, 0.7);
-  border-bottom: rgba(255, 255, 255, 0.3)
+/* navbar */
+.nav-menu {
+  background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .5));
+  padding: 30px;
+  transition: all .7s;
 }
 
-.logo a {
-  text-decoration: none;
-  float: left;
-  margin-left: 40px;
-  margin-top: 2px;
-  color: #ccc;
-  font-size: 35px;
-  font-weight: bold;
-
+.menu-item {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #eee;
+  transition: color .5s;
 }
 
-.menu {
-  margin-right: 30px;
+.menu-item:hover {
+  color: #70aed2;
 }
 
-label i {
-
-  color: #fff;
-  position: relative;
-  margin-left: 10px;
+.nav-active {
+  color: #70aed2;
 }
+
+.line1, .line2, .line3 {
+  width: 23px;
+  height: 3px;
+  margin: 5px;
+  transition: all .4s;
+}
+
+.change .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.change .line2 {
+  opacity: 0;
+}
+
+.change .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.custom-navbar {
+  padding: 5px 30px;
+  background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .7));
+}
+/* end of navbar */
+
+/* banner */
+.banner {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+}
+
+.banner-heading {
+  animation-name: anim;
+  animation-duration: 2s;
+}
+
+.banner-par {
+  animation-name: anim;
+  animation-duration: 2s;
+  animation-delay: .5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes anim {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* end of banner */
+
+/* end of header */
+
+/* End of NAVBAR*/
+
+
+
+
 /* CSS Document */
-
-
-
-
-
 
 #sidebar {
     overflow: hidden;
