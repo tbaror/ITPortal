@@ -3,14 +3,14 @@
 /* header */
 
 header {
-  height: 12vh;
+  height: 9vh;
   background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .5));
 }
 
 /* navbar */
 .nav-menu {
   background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .5));
-  padding: 30px;
+  padding: 15px;
   transition: all .7s;
 }
 
@@ -220,3 +220,21 @@ header {
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
+
+
+/* cards */
+.card-common {
+  box-shadow: 1px 2px 5px #999;
+  transition: all .4s;
+}
+
+.card-common:hover {
+  box-shadow: 2px 3px 15px #999;
+  transform: translateY(-1px);
+}
+/* end of cards */
+/* task list */
+.task-border {
+  border-left: 3px solid #f66436;
+}
+/* end of task list */
