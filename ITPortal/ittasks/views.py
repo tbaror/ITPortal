@@ -13,7 +13,7 @@ def index(request):
 
 
 
-class HomePageView(ListView):
+""" class HomePageView(ListView):
 
     template_name = "index.html"
     
@@ -21,14 +21,14 @@ class HomePageView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context = MainTask.objects.all()
-        return context
+        return context """
 
 class IndexView(TemplateView):
     template_name = 'index.html'
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['active_tasks'] = MainTask.objects.filter(task_title, complete=False).count()
+        context['active_tasks'] = MainTask.objects.filter(complete=False).count()
         context['maintask'] = MainTask.objects.all()
-        context['categories'] = Category.objects.all()
-        context['comments'] = Comments.objects.all()
+        #context['categories'] = Category.objects.all()
+        #context['comments'] = Comments.objects.all()
         return context    
