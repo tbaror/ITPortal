@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from .models import MainTask, ChildTask 
-#from .forms import ListForm
+from datetime import date
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
@@ -27,8 +27,12 @@ class IndexView(TemplateView):
     template_name = 'index.html'
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
+        #filter active runing tasks
         context['active_tasks'] = MainTask.objects.filter(complete=False).count()
+        #All oobjects
         context['maintask'] = MainTask.objects.all()
-        #context['categories'] = Category.objects.all()
+        #filter task due date
+        #due_range = 
+        context['due_task'] = MainTask.objects.filter(due_date__day__lte=7, complete=False).count()
         #context['comments'] = Comments.objects.all()
         return context    
