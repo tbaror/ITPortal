@@ -34,5 +34,9 @@ class IndexView(TemplateView):
         #filter task due date
         #due_range = 
         context['due_task'] = MainTask.objects.filter(due_date__day__lte=7, complete=False).count()
-        #context['comments'] = Comments.objects.all()
-        return context    
+        #task paused
+        context['task_paused'] = MainTask.objects.filter(task_status='PA', complete=False).count()
+       
+        #task paused
+        context['task_completed'] = MainTask.objects.filter(task_status='CO', complete=True).count()
+        return context

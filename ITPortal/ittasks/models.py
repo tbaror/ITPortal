@@ -20,7 +20,14 @@ class MainTask(models.Model):
     due_date = models.DateTimeField(default=datetime.datetime.now())
 
     global_task_assign = models.ForeignKey(User, on_delete=models.CASCADE, related_name="global_task_assign",default=1)
-
+    TASK_STATUS_CHOICES = [
+    ('ST', 'STARTED'),
+    ('NS', 'NOT STARTED'),
+    ('IP', 'IN PROGRESS'),
+    ('PA', 'PAUSED'),
+    ('CO', 'COMPLETED'),
+]
+    task_status = models.CharField(max_length=2,choices=TASK_STATUS_CHOICES,default='NOT STARTED')
 
     def __str__(self):
         return self.task_title
