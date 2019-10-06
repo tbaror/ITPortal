@@ -232,9 +232,29 @@ header {
   box-shadow: 2px 3px 15px #999;
   transform: translateY(-1px);
 }
+
+
+
+.panel-title > a:before {
+  float: right !important;
+  font-family: FontAwesome;
+  content:"\f068";
+  padding-right: 5px;
+}
+.panel-title > a.collapsed:before {
+  float: right !important;
+  content:"\f067";
+}
+.panel-title > a:hover, 
+.panel-title > a:active, 
+.panel-title > a:focus  {
+  text-decoration:none;
+}
 /* end of cards */
 /* task list */
 .task-border {
   border-left: 3px solid #f66436;
 }
+
+
 /* end of task list */
