@@ -14830,3 +14830,66 @@ File: scss
 @media (max-width: 991.98px) {
   .do-block {
     display: block !important; } }
+/*-- ============================================================== 
+ CALANDER STYLE 
+ ============================================================== */
+
+
+ .row-striped:nth-of-type(odd){
+  background-color: #efefef;
+  border-left: 4px #000000 solid;
+}
+
+.row-striped:nth-of-type(even){
+  background-color: #ffffff;
+  border-left: 4px #efefef solid;
+}
+
+.row-striped {
+    padding: 15px 0;
+    border-bottom: 3px solid rgb(82, 78, 78);
+}
+
+
+
+
+
+.calcontainer {
+  position: relative;
+  width: 50%;
+}
+  
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgb(87, 161, 184);
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+  opacity: 0.7;
+}
+
+.calcontainer:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 17px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  
+}
+
+hr.hline {
+  border: 1px solid white;
+}
