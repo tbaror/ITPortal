@@ -1,0 +1,79 @@
+/*cards book */
+.book-card {
+    position: relative;
+    box-shadow: 5px 15px 50px #aaa;
+    max-width: 420px;
+    overflow: hidden;
+    transition: all .8s; 
+   }
+   
+   .rotate {
+       perspective: 100rem;
+   }
+   
+   .back {
+       position: absolute;
+       top: -100%;
+       background: #fefefe ;
+       height: 100%;
+       width: 100%;
+       opacity: 0;
+       user-select: none;
+       pointer-events: none;
+       transform: rotateY(180deg);
+       transition: top .8s, opacity .4s;
+   }
+   
+   .back-content {
+       position: absolute;
+       top: 40%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+   }
+   
+   
+   
+       
+   
+   
+   
+   /*end cards book */
+   
+   
+   /* Inner card accordion */
+   /******************* Accordion Demo - 5 *****************/
+   .myaccordion {
+       max-width: 500px;
+       margin: 50px auto;
+       box-shadow: 0 0 1px rgba(0,0,0,0.1);
+     }
+     
+     .myaccordion .card,
+     .myaccordion .card:last-child .card-header {
+       border: none;
+     }
+     
+     .myaccordion .card-header {
+       border-bottom-color: #EDEFF0;
+       background: transparent;
+     }
+     
+     .myaccordion .fa-stack {
+       font-size: 18px;
+     }
+     
+     .myaccordion .btn {
+       width: 100%;
+       font-weight: bold;
+       color: #004987;
+       padding: 0;
+     }
+     
+     .myaccordion .btn-link:hover,
+     .myaccordion .btn-link:focus {
+       text-decoration: none;
+     }
+     
+     .myaccordion li + li {
+       margin-top: 10px;
+     }
