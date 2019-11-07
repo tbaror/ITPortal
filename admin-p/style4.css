@@ -126,7 +126,7 @@ span {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #27A9E3;
 }
 
 #sidebar ul li a {
@@ -136,7 +136,7 @@ span {
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: #27A9E3;
     background: #fff;
 }
 
@@ -147,7 +147,7 @@ span {
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #27A9E3;
 }
 
 a[data-toggle="collapse"] {
