@@ -75,7 +75,7 @@ span {
     text-align: center;
 }
 
-#sidebar.active .sidebar-header img[src="logo-text.png"],
+#sidebar.active .sidebar-header img[src="/static/img/logo-text.png"],
 #sidebar.active .CTAs {
     display: none;
 }

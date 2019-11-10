@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +12,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style4.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <!---Material icons-->
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css">
 
@@ -28,9 +29,9 @@
                     
                                 
                                
-                        <img src="logo-icon.png" class="light-logo" class="logo_name"/>
+                        <img src="{% static 'img/logo-icon.png' %}" class="light-logo" class="logo_name"/>
                         
-                        <img src="logo-text.png" alt="homepage" class="logo_d" />
+                        <img src="{% static 'img/logo-text.png' %}" alt="homepage" class="logo_d" />
                                 
                         
             </div>
@@ -78,6 +79,9 @@
                             <a href="#"><i class="fas fa-lock"></i> Security Managment</a>
                         </li>
 
+                        <li>
+                                <a href="#"><i class="fas fa-tape"></i> Backup Managment</a>
+                            </li>
                         
                         <li>
                             <a href="#"><i class="fas fa-link"></i> Add New Link</a>
@@ -124,7 +128,7 @@
                           <div class="card bg-light mb-3 ml-2 mt-3" style="max-width: 18rem;">
                                   
                                   <div class="card-body bg-white">
-                                          <img class="card-img-top img-circle rounded-circle mt-1" src="tal.jpg" alt="Card image cap">
+                                          <img class="card-img-top img-circle rounded-circle mt-1" src="{% static 'img/tal.jpg' %}" alt="Card image cap">
                                       
                                     <h5 class="card-title text-center mt-3">Tal Bar-Or</h5>
                                     <hr>
