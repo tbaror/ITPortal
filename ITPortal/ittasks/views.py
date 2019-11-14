@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from .models import MainTask, ChildTask 
-from datetime import date
+from datetime import date, datetime, timedelta
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
@@ -42,4 +42,10 @@ class IndexView(TemplateView):
 
         #task paused
         context['task_started'] = MainTask.objects.filter(task_status='NS', complete=True).count()
+
+        ###query for dashboard
+        #recent tasks query
+        context['recent_task'] = MainTask.objects.filter(created_at__gte=datetime.now()-timedelta(days=30))
+        
         return context
+        
