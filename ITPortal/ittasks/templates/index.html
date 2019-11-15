@@ -130,7 +130,7 @@
              <div id="collapse-{{ rtasks.id }}" class="collapse show" aria-labelledby="heading-{{ rtasks.id }}" data-parent="#accordionExample">
                <div class="card-body">
               
-                                 <span class="todo-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span> <span class="badge badge-pill badge-danger float-right">Today</span>
+                                 <span class="todo-desc">Lorem Ipsum is {{rtasks.created_at}}simply dummy text of the printing and typesetting industry.</span> <span class="badge badge-pill badge-danger float-right">{{ current_time|timeuntil:rtasks.created_at }}</span>
               
                      <ul class="list-inline">
                              <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>

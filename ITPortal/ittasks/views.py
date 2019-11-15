@@ -5,6 +5,7 @@ from .models import MainTask, ChildTask
 from datetime import date, datetime, timedelta
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.utils import timezone
 
 
 # Create your views here.
@@ -45,7 +46,12 @@ class IndexView(TemplateView):
 
         ###query for dashboard
         #recent tasks query
-        context['recent_task'] = MainTask.objects.filter(created_at__gte=datetime.now()-timedelta(days=30))
+        context['recent_task'] = MainTask.objects.filter(created_at__gte=datetime.now()-timedelta(days=30), complete=False)
+
+        #Current date time
+        now = timezone.now()
+        context['current_time'] = now
+
         
         return context
         
