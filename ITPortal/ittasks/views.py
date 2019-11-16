@@ -30,8 +30,12 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         #filter active runing tasks
         context['active_tasks'] = MainTask.objects.filter(complete=False).count()
-        #All oobjects
+        #All oobjects main Task
         context['maintask'] = MainTask.objects.all()
+
+        #All objects Subtask
+        #taskidobj = MainTask.objects.get(id)
+        #context['usersubtask'] = taskidobj.ChildTask.all()
         #filter task due date
         #due_range = 
         context['due_task'] = MainTask.objects.filter(due_date__day__lte=7, complete=False).count()
