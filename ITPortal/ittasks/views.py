@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
-from .models import MainTask, ChildTask 
+from .models import MainTask, ChildTask, User 
 from datetime import date, datetime, timedelta
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -33,9 +33,11 @@ class IndexView(TemplateView):
         #All oobjects main Task
         context['maintask'] = MainTask.objects.all()
 
+        
         #All objects Subtask
-        #taskidobj = MainTask.objects.get(id)
-        #context['usersubtask'] = taskidobj.ChildTask.all()
+        
+        
+        context['usersubtask'] = User.objects.prefetch_related('task_assign_set')
         #filter task due date
         #due_range = 
         context['due_task'] = MainTask.objects.filter(due_date__day__lte=7, complete=False).count()

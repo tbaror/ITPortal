@@ -135,7 +135,7 @@
                      <ul class="list-inline">
                              <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/1.jpg" alt="{{rtasks.global_task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
                              
-                            {% for usr in rtasks.childtask.maintask.all %}
+                            {% for usr in usersubtask.childtask.all %}
                                <p>{{usr.task_assign}}</p> 
                              {% endfor %}
                              
