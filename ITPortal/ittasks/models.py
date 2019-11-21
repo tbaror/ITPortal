@@ -52,3 +52,19 @@ class ChildTask(models.Model):
 
     def __str__(self):
         return self.task_description
+
+
+
+class UserProfile(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_image = models.ImageField(upload_to='images/')
+    mobile_number = 
+    teams_link = models.URLField(blank = True, max_length=200)
+
+    def __str__(self):
+        return self.user.username
+
+    def __unicode__(self):
+        return self.user.username
+            

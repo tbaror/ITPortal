@@ -133,7 +133,7 @@
                                  <span class="todo-desc">{{rtasks.task_title}}</span> <span class="badge badge-pill badge-danger float-right">{{ current_time|timeuntil:rtasks.created_at }}</span>
               
                      <ul class="list-inline">
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/1.jpg" alt="{{rtasks.global_task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
+                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/1.jpg" alt="{{rtasks.global_task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{rtasks.global_task_assign}}"></li>
                              
                             {% for usr in rtasks.item_main.all %}
                                <p>{{usr.task_assign}}  {{usr.id}} {{rtasks.childtask.id}}</p> 
