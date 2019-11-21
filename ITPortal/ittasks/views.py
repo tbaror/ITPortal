@@ -34,10 +34,7 @@ class IndexView(TemplateView):
         context['maintask'] = MainTask.objects.all()
 
         
-        #All objects Subtask
         
-        
-        context['usersubtask'] = User.objects.prefetch_related('task_assign_set')
         #filter task due date
         #due_range = 
         context['due_task'] = MainTask.objects.filter(due_date__day__lte=7, complete=False).count()
@@ -57,6 +54,10 @@ class IndexView(TemplateView):
         #Current date time
         now = timezone.now()
         context['current_time'] = now
+
+        #All objects Subtask
+        
+        context['usersubtask'] = ChildTask.objects.get(id=1)
 
         
         return context

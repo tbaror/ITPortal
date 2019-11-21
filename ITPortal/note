@@ -4,6 +4,12 @@ filter help
 https://stackoverflow.com/questions/5439901/getting-a-count-of-objects-in-a-queryset-in-django
 
 
+filter subclass
+https://stackoverflow.com/questions/53975534/django-how-to-access-a-foreignkey-parents-attribute
+<<<the solution>>>>
+https://stackoverflow.com/questions/7562885/django-get-all-related-choices-where-event-event-id
+
+
 CALANDER
 https://bootsnipp.com/snippets/VgzeR
 

@@ -36,7 +36,7 @@ class MainTask(models.Model):
 
 class ChildTask(models.Model):
     # Relationship Fields
-    item_main = models.ForeignKey('ittasks.MainTask',on_delete=models.CASCADE, related_name="item_main", )
+    item_main = models.ForeignKey('MainTask',on_delete=models.CASCADE, related_name="item_main", )
     task_description = models.CharField(max_length=200)
     task_info = models.TextField(blank = True)
     task_complete = models.BooleanField(default=False)
