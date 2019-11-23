@@ -123,7 +123,7 @@
                <h5 class="mb-0">
                  <a class="artasks" data-toggle="collapse" data-target="#collapse-{{ rtasks.id }}" aria-expanded="true" aria-controls="collapse-{{ rtasks.id }}">
                      <i class="m-r-5 fas fa-th-list" aria-hidden="true"></i>
-                     <span>{{rtasks.task_title}}</span>
+                     <span>{{rtasks.task_title}} {{rtasks.global_task_assign.profile_image }}</span>
                  </a>
                </h5>
              </div>
@@ -133,10 +133,10 @@
                                  <span class="todo-desc">{{rtasks.task_title}}</span> <span class="badge badge-pill badge-danger float-right">{{ current_time|timeuntil:rtasks.created_at }}</span>
               
                      <ul class="list-inline">
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/1.jpg" alt="{{rtasks.global_task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{rtasks.global_task_assign}}"></li>
+                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="{{ rtasks.global_task_assign.profile_image }}" alt="{{rtasks.global_task_assign.username}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{rtasks.global_task_assign}}"></li>
                              
                             {% for usr in rtasks.item_main.all %}
-                               <p>{{usr.task_assign}}  {{usr.id}} {{rtasks.childtask.id}}</p> 
+                               <p>{{usr.task_assign.username}}  {{usr.id}} {{rtasks.childtask.id}}</p> 
                              {% endfor %}
                              
                              <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>

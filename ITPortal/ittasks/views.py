@@ -57,7 +57,7 @@ class IndexView(TemplateView):
 
         #All objects Subtask
         
-        context['usersubtask'] = ChildTask.objects.get(id=1)
+        #context['usersubtask'] = ChildTask.objects.get(id=1)
 
         
         return context
