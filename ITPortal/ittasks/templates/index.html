@@ -121,102 +121,51 @@
          <div class="card m-b-0">
              <div class="card-header" id="heading-{{ rtasks.id }}">
                <h5 class="mb-0">
-                 <a class="artasks" data-toggle="collapse" data-target="#collapse-{{ rtasks.id }}" aria-expanded="false" aria-controls="collapse-{{ rtasks.id }}">
+                 <a class="artasks" data-toggle="collapse" data-target="#collapse-{{ rtasks.id }}" aria-expanded="true" aria-controls="collapse-{{ rtasks.id }}">
                      <i class="m-r-5 fas fa-th-list" aria-hidden="true"></i>
                      <span>{{rtasks.task_title}}</span>
                  </a>
                </h5>
              </div>
-             <div id="collapse-{{ rtasks.id }}" class="collapse show" aria-labelledby="heading-{{ rtasks.id }}" data-parent="#accordionExample">
+             <div id="collapse-{{ rtasks.id }}" class="collapse" aria-labelledby="heading-{{ rtasks.id }}" data-parent="#accordionExample">
                <div class="card-body">
               
                                  <span class="todo-desc">{{rtasks.task_title}}</span> <span class="badge badge-pill badge-danger float-right">{{ current_time|timeuntil:rtasks.created_at }}</span>
               
                      <ul class="list-inline">
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="{{ rtasks.global_task_assign.profile_image.url }}" alt="{{rtasks.global_task_assign.username}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{rtasks.global_task_assign}}"></li>
-                             
+                              <li class="assignee list-inline-item">Global Task Assign To:</li>
+                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="{{ rtasks.global_task_assign.profile_image.url }}" alt="{{rtasks.global_task_assign.username}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{rtasks.global_task_assign.first_name}} {{rtasks.global_task_assign.family_name}}"></li>
+                      </ul>    
+                       <ul class="list-inline">  
+                          <li class="assignee list-inline-item">Sub Task Assign To:</li> 
                             {% for usr in rtasks.item_main.all %}
-                               <p>{{usr.task_assign.username}}  {{usr.id}} {{rtasks.childtask.id}}</p> 
+                              <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="{{usr.task_assign.profile_image.url }}" alt="{{usr.task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{usr.task_assign.first_name}} {{usr.task_assign.family_name}}"></li>
+                              
                              {% endfor %}
-                             
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
+                            
                          </ul>
-                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          {{rtasks.global_task_info}}
                  <div class="d-flex no-block align-items-center m-t-25">
-                         <span>{{rtasks.overall_precent_complete}}% Impressions</span>
+                         <span> <strong>{{rtasks.overall_precent_complete}}%</strong>  Global Progress</span>
                          <div class="ml-auto">
-                             <span>{{rtasks.overall_precent_complete}}</span>
+                             <span>100%</span>
                          </div>
                      </div>
                      <div class="progress">
                          <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{rtasks.overall_precent_complete}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                      </div>
                 <div class="comment-footer mt-3">
-                         <span class="text-muted float-right">April 14, 2016</span> 
-                         <button type="button" class="btn btn-cyan btn-sm">View</button>
-                         <button type="button" class="btn btn-success btn-sm">Publish</button>
-                         <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                         <span class="text-muted float-right">Due Date: {{ rtasks.due_date| date:"M d, Y" }}</span> 
+                         <button type="button" class="btn btn-cyan btn-sm">View task</button>
+                         <button type="button" class="btn btn-success btn-sm">Updtae Task</button>
+                         <button type="button" class="btn btn-danger btn-sm">Delete Task</button>
                      </div>     
                </div>
              </div>
          </div>
         {% endfor %}    
           {% endif %} 
-         <div class="card m-b-0">
-             <div class="card-header" id="headingTwo">
-               <h5 class="mb-0">
-                 <a class="artasks" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                     <i class="m-r-5 fas fa-th-list" aria-hidden="true"></i>
-                     <span>Accordion Example 2</span>
-                 </a>
-               </h5>
-             </div>
-             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-               <div class="card-body">
-              
-                                 <span class="todo-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span> <span class="badge badge-pill badge-danger float-right">Today</span>
-              
-                     <ul class="list-inline">
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="../../assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                         </ul>
-                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                 <div class="d-flex no-block align-items-center m-t-25">
-                         <span>53% Impressions</span>
-                         <div class="ml-auto">
-                             <span>785</span>
-                         </div>
-                     </div>
-                     <div class="progress">
-                         <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 53%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                     </div>
-                <div class="comment-footer mt-3">
-                         <span class="text-muted float-right">April 14, 2016</span> 
-                         <button type="button" class="btn btn-cyan btn-sm">View</button>
-                         <button type="button" class="btn btn-success btn-sm">Publish</button>
-                         <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                     </div>     
-               </div>
-             </div>
-         </div>
-         <div class="card m-b-0 border-top">
-             <div class="card-header" id="headingThree">
-               <h5 class="mb-0">
-                 <a class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                     <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
-                     <span>Accordion Example 3</span>
-                 </a>
-               </h5>
-             </div>
-             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-               <div class="card-body">
-                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-               </div>
-             </div>
+       
          </div>
      </div>
    
