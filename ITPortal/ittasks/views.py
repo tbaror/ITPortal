@@ -38,6 +38,7 @@ class IndexView(TemplateView):
         #filter task due date
         #due_range = 
         context['due_task'] = MainTask.objects.filter(due_date__day__lte=7, complete=False).count()
+        context['due_task_obj'] = MainTask.objects.filter(due_date__day__lte=7, complete=False)
         #task paused
         context['task_paused'] = MainTask.objects.filter(task_status='PA', complete=False).count()
        
