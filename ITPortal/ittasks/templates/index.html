@@ -108,7 +108,7 @@
          <div class="card-body">
              <h4 class="page-title card-title">Recent Tasks</h4>
          </div>
-         <div class="comment-widgets scrollable">
+         <div class="comment-widgets ">
              <!-- Comment Row -->
              <!---Recent Tasks-->
       <div class="accordion" id="accordionExample">
@@ -166,80 +166,162 @@
          </div>
         {% endfor %}    
           {% endif %} 
-       
+          
          </div>
      </div>
    
-             <!---End OF Recent Tasks objecta-->
+             <!---End OF Recent Tasks objects-->
+
+             
+             
              
          </div>
          
+         
+
+
+
      </div>
 
-    <!---Over Due Task-->
+       <!---Over Due Task-->
    <div class="col-lg-6">
-    <!-- Card -->
-    <div class="card">
-        <div class="card-body">
-            <h4 class="page-title card-title">Upcoming Over Due Tasks</h4>
-            <div class="chat-box scrollable" style="height:475px;">
-          <!--CALANDER Row -->
-<div class="row"> 
-    <!----over due card--> 
-    {% if due_task_obj %}
+        <!-- Card -->
+        <div class="card">
+            <div class="card-body">
+                <h4 class="page-title card-title">Upcoming Over Due Tasks</h4>
+                <div class="chat-box scrollable" style="height:520px;">
+              <!--CALANDER Row -->
+    <div class="row"> 
+        <!----over due card--> 
+        {% if due_task_obj %}
+        
+       {% for due in due_task_obj  %}
+       
+       
+              
+                <div class="container calcontainer">
+                     <div class="row row-striped">
+                        <div class="col-2 text-right">
+                     <h1 class="display-4"><span class="badge badge-secondary"> {{due.due_date|date:"d" }}</span></h1>
+                          <h2 class="capi">{{due.due_date|date:"M" }}</h2>
+            </div>
+            <div class="col-10">
+            <h3 class="text-uppercase"><strong>{{ due.task_title }}</strong></h3>
+            <ul class="list-inline">
+            <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
+            <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{due.due_date}}</li>
+            <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
+            </ul>
+            <p>{{due.global_task_info}}</p>
+            </div>
+            <div class="overlay">
+            <div class="text">{{due.task_title}}
+            <hr class="hline"> 
+            <p class="text-light">{{due.global_task_info|slice:":50"}}</p>
+            <button type="button" class="btn btn-primary mb-2">View Details</button>
+            </div>
+            </div>
+            </div>
+            </div>
+            {% endfor %}  
+        {% endif %}
+        <!----End of over due card-->    
+            
     
-   {% for due in due_task_obj  %}
-   
-   
-          
-            <div class="container calcontainer">
-                 <div class="row row-striped">
-                    <div class="col-2 text-right">
-                 <h1 class="display-4"><span class="badge badge-secondary"> {{due.due_date|date:"d" }}</span></h1>
-                      <h2 class="capi">{{due.due_date|date:"M" }}</h2>
-        </div>
-        <div class="col-10">
-        <h3 class="text-uppercase"><strong>{{ due.task_title }}</strong></h3>
-        <ul class="list-inline">
-        <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{due.due_date}}</li>
-        <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
-        </ul>
-        <p>{{due.global_task_info}}</p>
-        </div>
-        <div class="overlay">
-        <div class="text">{{due.task_title}}
-        <hr class="hline"> 
-        <p class="text-light">{{due.global_task_info}}</p>
-        <button type="button" class="btn btn-primary mb-2">View Details</button>
-        </div>
-        </div>
-        </div>
-        </div>
-        {% endfor %}  
-    {% endif %}
-    <!----End of over due card-->    
-
-
-</div>
-          <!--END CALANDER Row -->      
-    <!-- card -->
-   
     </div>
-    <!-- accoridan part -->
-
-    <!-- toggle part -->
+              <!--END CALANDER Row -->      
+        <!-- card -->
+       
+        </div>
+        
+        
+    </div>
+    </div>
     
-    <!-- Tabs -->
+    </div>
     
-</div>
-</div>
+       <!----End Of Over Due Tasks --> 
 
-</div>
-
-   <!----End Of Over Due Tasks --> 
+  
     <!---End OF Recent Tasks DIV-->
+ <!-- Tasks updates news -->
+                        <div class="card col-lg-6 events-cards">
+                            <div class="card-body">
+                                <h4 class="page-title ecard-title m-b-0">Tasks News Updates</h4>
+                            </div>
+                            <ul class="list-style-none">
+                                <li class="d-flex no-block card-body">
+                                    <i class="fas fa-info-circle w-30px m-t-5"></i>
+                                    <div>
+                                        <a href="#" class="m-b-0 font-medium p-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                                        <span class="text-muted">dolor sit amet, consectetur adipiscing</span>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <div class="tetx-right">
+                                            <h5 class="text-muted m-b-0">20</h5>
+                                            <span class="text-muted font-16">Jan</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="d-flex no-block card-body border-top">
+                                    <i class="fa fa-gift w-30px m-t-5"></i>
+                                    <div>
+                                        <a href="#" class="m-b-0 font-medium p-0">Congratulation Maruti, Happy Birthday</a>
+                                        <span class="text-muted">many many happy returns of the day</span>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <div class="tetx-right">
+                                            <h5 class="text-muted m-b-0">11</h5>
+                                            <span class="text-muted font-16">Jan</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="d-flex no-block card-body border-top">
+                                    <i class="fa fa-plus w-30px m-t-5"></i>
+                                    <div>
+                                        <a href="#" class="m-b-0 font-medium p-0">Maruti is a Responsive Admin theme</a>
+                                        <span class="text-muted">But already everything was solved. It will ...</span>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <div class="tetx-right">
+                                            <h5 class="text-muted m-b-0">19</h5>
+                                            <span class="text-muted font-16">Jan</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="d-flex no-block card-body border-top">
+                                    <i class="fa fa-leaf w-30px m-t-5"></i>
+                                    <div>
+                                        <a href="#" class="m-b-0 font-medium p-0">Envato approved Maruti Admin template</a>
+                                        <span class="text-muted">i am very happy to approved by TF</span>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <div class="tetx-right">
+                                            <h5 class="text-muted m-b-0">20</h5>
+                                            <span class="text-muted font-16">Jan</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="d-flex no-block card-body border-top">
+                                    <i class="fa fa-question-circle w-30px m-t-5"></i>
+                                    <div>
+                                        <a href="#" class="m-b-0 font-medium p-0"> I am alwayse here if you have any question</a>
+                                        <span class="text-muted">we glad that you choose our template</span>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <div class="tetx-right">
+                                            <h5 class="text-muted m-b-0">15</h5>
+                                            <span class="text-muted font-16">Jan</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Tasks updates news -->
+
    </div>
+
 
    
    </div>

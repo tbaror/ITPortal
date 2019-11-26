@@ -76,10 +76,10 @@ class MainTask(models.Model):
     global_task_info = models.TextField(max_length=500,default=None) 
     complete = models.BooleanField(default=False)
     overall_precent_complete = models.PositiveIntegerField(default=0)
-    
     created_at = models.DateTimeField(default=datetime.datetime.now())
     updated_at = models.DateTimeField(default=datetime.datetime.now())
     due_date = models.DateTimeField(default=datetime.datetime.now())
+    task_location = models.CharField(max_length=400, blank=True, null=True)
 
     global_task_assign = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="global_task_assign",default=1)
     TASK_STATUS_CHOICES = [
@@ -88,7 +88,7 @@ class MainTask(models.Model):
     ('IP', 'IN PROGRESS'),
     ('PA', 'PAUSED'),
     ('CO', 'COMPLETED'),
-]
+    ]
     task_status = models.CharField(max_length=2,choices=TASK_STATUS_CHOICES,default='NOT STARTED')
 
     def __str__(self):
