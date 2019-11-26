@@ -195,22 +195,22 @@
             <div class="container calcontainer">
                  <div class="row row-striped">
                     <div class="col-2 text-right">
-                 <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-                      <h2>OCT</h2>
+                 <h1 class="display-4"><span class="badge badge-secondary"> {{due.due_date|date:"d" }}</span></h1>
+                      <h2 class="capi">{{due.due_date|date:"M" }}</h2>
         </div>
         <div class="col-10">
-        <h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
+        <h3 class="text-uppercase"><strong>{{ due.task_title }}</strong></h3>
         <ul class="list-inline">
         <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
+        <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{due.due_date}}</li>
         <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
         </ul>
-        <p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>{{due.global_task_info}}</p>
         </div>
         <div class="overlay">
-        <div class="text">Hello World
+        <div class="text">{{due.task_title}}
         <hr class="hline"> 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo repellendus quasi officiis maxime laboriosam?</p>
+        <p class="text-light">{{due.global_task_info}}</p>
         <button type="button" class="btn btn-primary mb-2">View Details</button>
         </div>
         </div>

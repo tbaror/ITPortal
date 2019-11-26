@@ -118,3 +118,7 @@
   hr.hline {
     border: 1px solid white;
   }
+
+  .capi {
+    text-transform: uppercase;  
+  }
