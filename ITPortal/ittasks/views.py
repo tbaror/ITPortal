@@ -56,6 +56,9 @@ class IndexView(TemplateView):
         now = timezone.now()
         context['current_time'] = now
 
+        #Recent task update
+        context['recent_updates'] = MainTask.objects.filter(updated_at__gte=datetime.now()-timedelta(days=7), complete=False)
+
         #All objects Subtask
         
         #context['usersubtask'] = ChildTask.objects.get(id=1)

@@ -176,15 +176,46 @@
              
              
          </div>
-         
+       
+      <!-- Tasks updates news -->
+      <div class="card">
+        <div class="card-body">
+            <h4 class="page-title ecard-title m-b-0">Tasks News Updates</h4>
+        </div>
+        <ul class="list-style-none">
+            {% if recent_updates %}
+            {% for newtsk in recent_updates  %}
+            <li class="d-flex no-block card-body">
+                <i class="fas fa-info-circle w-30px m-t-5"></i>
+                <div>
+                    <a href="#" class="m-b-0 font-medium p-0">{{newtsk.task_title}}</a>
+                    <span class="text-muted">{{newtsk.global_task_info}}</span>
+                </div>
+                <div class="ml-auto">
+                    <div class="tetx-right">
+                        <h5 class="text-muted m-b-0">{{newtsk.updated_at|date:"d"}}</h5>
+                        <span class="text-muted font-16">{{newtsk.updated_at|date:"M" }}</span>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+           {% endif %}
+        </ul>
+    </div>
+
+<!-- End Tasks updates news -->   
          
 
 
 
      </div>
 
-       <!---Over Due Task-->
-   <div class="col-lg-6">
+   
+  
+    <!---End OF Recent Tasks DIV-->
+ 
+ <!---Over Due Task-->
+    <div class="col-lg-6">
         <!-- Card -->
         <div class="card">
             <div class="card-body">
@@ -208,9 +239,9 @@
             <div class="col-10">
             <h3 class="text-uppercase"><strong>{{ due.task_title }}</strong></h3>
             <ul class="list-inline">
-            <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
+            <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{due.due_date | date:" l " }}</li>
             <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{due.due_date}}</li>
-            <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
+            <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{due.task_location}}</li>
             </ul>
             <p>{{due.global_task_info}}</p>
             </div>
@@ -241,88 +272,14 @@
     </div>
     
        <!----End Of Over Due Tasks --> 
+    
 
-  
-    <!---End OF Recent Tasks DIV-->
- <!-- Tasks updates news -->
-                        <div class="card col-lg-6 events-cards">
-                            <div class="card-body">
-                                <h4 class="page-title ecard-title m-b-0">Tasks News Updates</h4>
-                            </div>
-                            <ul class="list-style-none">
-                                <li class="d-flex no-block card-body">
-                                    <i class="fas fa-info-circle w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
-                                        <span class="text-muted">dolor sit amet, consectetur adipiscing</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">20</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex no-block card-body border-top">
-                                    <i class="fa fa-gift w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0">Congratulation Maruti, Happy Birthday</a>
-                                        <span class="text-muted">many many happy returns of the day</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">11</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex no-block card-body border-top">
-                                    <i class="fa fa-plus w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0">Maruti is a Responsive Admin theme</a>
-                                        <span class="text-muted">But already everything was solved. It will ...</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">19</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex no-block card-body border-top">
-                                    <i class="fa fa-leaf w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0">Envato approved Maruti Admin template</a>
-                                        <span class="text-muted">i am very happy to approved by TF</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">20</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex no-block card-body border-top">
-                                    <i class="fa fa-question-circle w-30px m-t-5"></i>
-                                    <div>
-                                        <a href="#" class="m-b-0 font-medium p-0"> I am alwayse here if you have any question</a>
-                                        <span class="text-muted">we glad that you choose our template</span>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <div class="tetx-right">
-                                            <h5 class="text-muted m-b-0">15</h5>
-                                            <span class="text-muted font-16">Jan</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- End Tasks updates news -->
+
 
    </div>
+   <!---End of recent taasks row-->
 
-
+    
    
    </div>
    
