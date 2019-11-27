@@ -66,3 +66,10 @@ class IndexView(TemplateView):
         
         return context
         
+class TaskView(TemplateView):
+    template_name = "tasks_view.html"
+    def get_context_data(self, **kwargs):
+        context = super(TaskView, self).get_context_data(**kwargs)
+
+        context['objtasks'] = MainTask.objects.all()
+        return context
