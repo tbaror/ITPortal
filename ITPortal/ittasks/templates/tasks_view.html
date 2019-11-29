@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 
-{% load staticfiles %}
+{% load static from staticfiles %}
 
 
 {% block content %}
@@ -8,28 +8,29 @@
     <link href="{% static 'css/tasks_view_style.css' %}" rel="stylesheet">
     <!---CSS Bootstrap 4Table-->
     <link href="{% static 'css/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+   
   
     <section class="suggested-books">
       <div class="container-fluid" id="myGroup">
         <div class="row">
           <div class="col text-center py-5">
-            <h1 class="text-secondary text-uppercase font-italic common-title">The most popular books of week</h1>
+            <h1 class="text-secondary text-uppercase font-italic common-title">Task View List</h1>
           </div>
         </div>
         <!-- end of title -->
 
         <!--selctore button-->
         <p>
-          <a class="btn btn-secondary active" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <a class="btn btn-secondary active" data-toggle="collapse" href="#collapseSelector" role="button" aria-expanded="false" aria-controls="collapseSelector">
             <i class="fas fa-th"> Grid View</i>
           </a>
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSelector2" aria-expanded="false" aria-controls="collapseSelector2">
             <i class="fa fa-bars"> List View</i>
           </button>
       </p>
   
        <!--end of selctore button--> 
-      <div class="collapse show" id="collapseExample" data-parent="#myGroup">
+      <div class="collapse show" id="collapseSelector" data-parent="#myGroup">
         <div class="row justify-content-around align-items-center">
           <!---Task Card-->
            <div class="col-xl-3 col-lg-4 col-sm-8 rotate">
@@ -154,7 +155,7 @@
         </div>
       </div>
       <!---content Table-->
-      <div class="collapse" id="collapseExample2" data-parent="#myGroup">
+      <div class="collapse" id="collapseSelector2" data-parent="#myGroup">
         <div class="card card-body">
             <!---Table content-->
             <div class="card">
@@ -212,20 +213,11 @@
         
     </section>
 
-    {% endblock content %}
     
-    {% block extra_js %}
+    
+    
+     
     <!-- Optional JavaScript -->
     
-    <script src="{% static 'js/accordin_script.js' %}"></script>
-    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
-    <!--Basic Table-->
     
-    <script>
-       
-        $(document).ready(function() {
-          $('#zero_config').DataTable();
-      } );
-    </script>
-    {% endblock extra_js %}
+   {% endblock content %}

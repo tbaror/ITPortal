@@ -237,6 +237,20 @@
           $('[data-toggle="tooltip"]').tooltip();   
         });
         </script>
+
+<!--task view script-->
+<script type="text/javascript" src="{% static 'js/accordin_script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+    <!--Basic Table-->
+   
+    <script type="text/javascript">
+       
+        $(document).ready(function() {
+          $('#zero_config').DataTable();
+      } );
+    </script>
+<!--End task view script-->    
 </body>
 
 </html>
