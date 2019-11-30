@@ -58,11 +58,15 @@
                   <h6 class=""><span><i class="fab fa-buffer"></i></span> <strong>Sub Task Status</strong> </h6>
                   <hr>
                <div id="accordion" class="myaccordion">
+              
+               
+               
                   <div class="card">
-                    <div class="card-header" id="headingOne">
+                      {% for subts in tsobj.item_main.all %}
+                    <div class="card-header" id="heading-{{ subts.id }}">
                       <h2 class="mb-0">
-                        <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                          Undergraduate Studies
+                        <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-{{ subts.id }}" aria-expanded="false" aria-controls="collapse-{{ subts.id }}">
+                            {{ subts.task_description }}
                           <span class="fa-stack fa-sm">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
@@ -70,24 +74,24 @@
                         </button>
                       </h2>
                     </div>
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id="collapse-{{ subts.id }}" class="collapse" aria-labelledby="heading-{{ subts.id }}" data-parent="#accordion">
                       <div class="card-body">
                           <div class="card">
                               <div class="card-body">
                                   <ul class="list-group">
-                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-braille"style="font-size:20px;"></i>   Task Name: dfsdfsd </li>
-                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-align-center"style="font-size:20px;"></i>   Task Desc & Updates: </li>
-                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-user-alt"style="font-size:20px;"></i>   Assigned User: </li>
-                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-clock"style="font-size:20px;"></i>   Task Created: </li>
-                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-history"style="font-size:20px;"></i>   Task Updated: </li>
-                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-hourglass-half"style="font-size:20px;"></i>   Task Due Date:</li>
+                                      
+                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-align-center"style="font-size:20px;"></i>   Task Desc & Updates: {{ subts.task_info }} </li>
+                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-user-alt"style="font-size:20px;"></i>   Assigned User: {{subts.task_assign.first_name}} {{subts.task_assign.family_name}}</li>
+                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-clock"style="font-size:20px;"></i>   Task Created: {{subts.task_created}} </li>
+                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-history"style="font-size:20px;"></i>   Task Updated:{{subts.task_updated_at}} </li>
+                                      <li class="list-group-item list-group-item-light text-left text-dark"><i class="fas fa-hourglass-half"style="font-size:20px;"></i> Task Due Date:{{subts.task_due_date}}</li>
                                     </ul>
 
                                     <!--progress task-->
                                     <h6 class="mb-2">Sub Task Progress</h6>
                                     <div class="progress mb-2" style="height: 20px">
-                                      <div class="progress-bar progress-bar-striped font-weight-bold bg-info" style="width: 10%">
-                                        10%
+                                      <div class="progress-bar progress-bar-striped font-weight-bold bg-info" style="width: {{subts.task_precent_complete}}%">
+                                       {{subts.task_precent_complete}}%
                                       </div>
                                     </div>
                               </div>
@@ -95,61 +99,33 @@
                           </div>
                       </div>
                     </div>
+                    {% endfor %}
                   </div>
                   
-                  <div class="card">
-                    <div class="card-header" id="headingTwo">
-                      <h2 class="mb-0">
-                        <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Postgraduate Studies
-                          <span class="fa-stack fa-2x">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                      <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a vulputate ligula. Integer elementum finibus arcu, ac faucibus nulla commodo ac. Proin nunc mi, feugiat in rhoncus et, mattis quis enim. Duis metus nulla, cursus et urna eget, bibendum commodo magna. Donec placerat arcu leo, quis ultrices felis blandit sed. Vivamus vehicula urna pretium dapibus dignissim. Vestibulum nibh tellus, sodales ut eros sit amet, fringilla blandit eros. Donec volutpat metus non lorem sodales lobortis. Mauris tincidunt pharetra ultrices.</p>
-                
-                  <p>ed varius nibh ut neque tincidunt, eu blandit libero hendrerit. Mauris eu diam eget risus vestibulum tincidunt. Integer volutpat, lorem a lobortis egestas, ligula nisl feugiat tortor, sed condimentum nulla ligula at justo. Praesent non est justo. Sed vitae rutrum est. In et risus id sem egestas iaculis nec vitae erat. Donec sed massa a lacus ultrices feugiat. Mauris scelerisque efficitur est, nec tincidunt neque interdum vitae. Donec convallis venenatis nisl eget ullamcorper. Mauris dapibus risus quis sapien varius, vel convallis justo mattis. Curabitur id condimentum turpis. Fusce vitae dui at nunc condimentum congue.</p>
-                
-                  <p>Vivamus placerat dapibus enim, nec semper massa malesuada eu. Sed ultrices, ex sit amet facilisis faucibus, nunc enim imperdiet enim, eget eleifend nisi dui ut dolor. Integer quam quam, commodo ut elementum non, elementum sit amet tortor. Aliquam malesuada mi id vulputate consectetur. In velit eros, sodales et sem non, ullamcorper rutrum nunc. Praesent nec fermentum neque. Nam at arcu luctus nisl congue vehicula at et odio. Nullam posuere sit amet lacus et ornare. Cras vitae quam tempor diam condimentum ultricies vitae id risus. Nunc euismod porta nulla non consequat. Etiam euismod volutpat vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec scelerisque eu turpis et dictum.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-header" id="headingThree">
-                      <h2 class="mb-0">
-                        <button class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                          Research
-                          <span class="fa-stack fa-2x">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </button>
-                      </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                      <div class="card-body">
-                        <p>ed varius nibh ut neque tincidunt, eu blandit libero hendrerit. Mauris eu diam eget risus vestibulum tincidunt. Integer volutpat, lorem a lobortis egestas, ligula nisl feugiat tortor, sed condimentum nulla ligula at justo. Praesent non est justo. Sed vitae rutrum est. In et risus id sem egestas iaculis nec vitae erat. Donec sed massa a lacus ultrices feugiat. Mauris scelerisque efficitur est, nec tincidunt neque interdum vitae. Donec convallis venenatis nisl eget ullamcorper. Mauris dapibus risus quis sapien varius, vel convallis justo mattis. Curabitur id condimentum turpis. Fusce vitae dui at nunc condimentum congue.</p>
-                      </div>
-                    </div>
-                  </div>
+                          
                 </div>
                <!----end accordion inside card-->
                 </div>
                 <div class="card-footer">
                     <h6 class="mb-3">Project Overall Progress</h6>
                     <div class="progress mb-2" style="height: 20px">
-                      <div class="progress-bar progress-bar-striped font-weight-bold bg-info" style="width: 10%">
-                        10%
+                      <div class="progress-bar progress-bar-striped font-weight-bold bg-info" style="width: {{tsobj.overall_precent_complete}}%">
+                         {{tsobj.overall_precent_complete}}%
                       </div>
                     </div>
-                    <button type="button" class="btn btn-success text-white">In Progress</button>
-                    <button type="button" class="btn btn-outline-secondary">View Details</button>
-                    <p class="card-text"><i class="fas fa-hourglass-half"></i> Task Over Due at: 07/24/2019</p>
+                    <!--Task status condition-->
+                    {% if tsobj.get_task_status_display == 'STARTED' or tsobj.get_task_status_display == 'IN PROGRESS' %}
+                      <button type="button" class="btn btn-primary text-white">{{tsobj.get_task_status_display}}</button>
+                    {% elif tsobj.get_task_status_display == 'NOT STARTED' %} 
+                      <button type="button" class="btn btn-warning text-white">{{tsobj.get_task_status_display}}</button>
+                    {% elif tsobj.get_task_status_display == 'PAUSED' %}
+                      <button type="button" class="btn btn-danger text-white">{{tsobj.get_task_status_display}}</button>
+                    {% elif tsobj.get_task_status_display == 'COMPLETED' %}
+                      <button type="button" class="btn btn-success text-white">{{tsobj.get_task_status_display}}</button>     
+                    {% endif %}
+                   <!--End Of Task status condition--> 
+                    <button type="button" class="btn btn-outline-secondary"><a href="#"> View Details</a></button>
+                    <p class="card-text"><i class="fas fa-hourglass-half"></i> Task Over Due at: {{tsobj.due_date | date:"M d, Y" }}</p>
                     
                 </div>
                 
@@ -189,9 +165,20 @@
                                     <span class="badge badge-dark">{{tsobj.global_task_assign.first_name}} {{tsobj.global_task_assign.family_name}}</span> </td>
                                     <td>{{tsobj.created_at}}</td>
                                     <td>{{tsobj.due_date}}</td>
-                                    <td class="text-center"><button type="button" class="btn btn-success text-white">{{tsobj.get_task_status_display}}</button></td>
+                                    <!--Task status condition-->
+                                    {% if tsobj.get_task_status_display == 'STARTED' or tsobj.get_task_status_display == 'IN PROGRESS' %}
+                                     <td class="text-center"><button type="button" class="btn btn-primary text-white">{{tsobj.get_task_status_display}}</button></td>
+                                    {% elif tsobj.get_task_status_display == 'NOT STARTED' %}
+                                      <td class="text-center"><button type="button" class="btn btn-warning text-white">{{tsobj.get_task_status_display}}</button></td>
+                                    {% elif tsobj.get_task_status_display == 'PAUSED' %}
+                                      <td class="text-center"><button type="button" class="btn btn-danger text-white">{{tsobj.get_task_status_display}}</button></td>
+                                    {% elif tsobj.get_task_status_display == 'COMPLETED' %}
+                                      <td class="text-center"><button type="button" class="btn btn-success text-white">{{tsobj.get_task_status_display}}</button></td>  
+                                    {% endif %}
+                                    <!--End Task status condition-->
+                                   
                                     <td><div class="progress mt-2" style="height: 20px">
-                                        <div class="progress-bar progress-bar-striped font-weight-bold bg-info" style="width: 10%">
+                                        <div class="progress-bar progress-bar-striped font-weight-bold bg-info" style="width: {{tsobj.overall_precent_complete}}%">
                                           {{tsobj.overall_precent_complete}}%
                                         </div>
                                       </div></td>
