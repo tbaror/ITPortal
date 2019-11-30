@@ -10,7 +10,7 @@
     <link href="{% static 'css/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
    
   
-    <section class="suggested-books">
+    <section class="tasks-view">
       <div class="container-fluid" id="myGroup">
         <div class="row">
           <div class="col text-center py-5">
@@ -34,6 +34,8 @@
         <div class="row justify-content-around align-items-center">
           <!---Task Card-->
            <div class="col-xl-3 col-lg-4 col-sm-8 rotate">
+     <!---Task Card section-->        
+        {% if objtasks %}   
             <div class="card text-center mb-3 book-card mx-auto">
                 <div class="card-header">
                     <div>
@@ -92,6 +94,7 @@
                       </div>
                     </div>
                   </div>
+                  
                   <div class="card">
                     <div class="card-header" id="headingTwo">
                       <h2 class="mb-0">
@@ -151,18 +154,20 @@
               </div>
           </div>
    <!---End of Task Card-->       
-          
+   {% endif %}
         </div>
       </div>
-      <!---content Table-->
+      <!---Content Data Table-->
       <div class="collapse" id="collapseSelector2" data-parent="#myGroup">
         <div class="card card-body">
             <!---Table content-->
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Basic Datatable</h5>
+                    <h5 class="card-title">Tasks Datatable</h5>
+            {% if objtasks %}
+           
                     <div class="table-responsive">
-                        <table id="zero_config" class="table table-striped table-bordered">
+                        <table id="zero_config" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Task Name</th>
@@ -174,19 +179,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                             {% for tsobj in objtasks %}
                                 <tr>
-                                    <td><img class="rounded-circle" width="40" src="../../assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"> Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2019/04/25</td>
-                                    <td>2019/05/25</td>
-                                    <td><button type="button" class="btn btn-success text-white">In Progress</button></td>
+                                    <td><i class="fas fa-layer-group"></i> <span class="badge badge-secondary"><a href="#">{{tsobj.task_title}}</a></span></td>
+                                    <td><img class="rounded-circle" width="40" src="{{ tsobj.global_task_assign.profile_image.url }}" alt="{{rtasks.global_task_assign.username}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{tsobj.global_task_assign.first_name}} {{tsobj.global_task_assign.family_name}}">
+                                    <span class="badge badge-dark">{{tsobj.global_task_assign.first_name}} {{tsobj.global_task_assign.family_name}}</span> </td>
+                                    <td>{{tsobj.created_at}}</td>
+                                    <td>{{tsobj.due_date}}</td>
+                                    <td class="text-center"><button type="button" class="btn btn-success text-white">{{tsobj.get_task_status_display}}</button></td>
                                     <td><div class="progress mt-2" style="height: 20px">
                                         <div class="progress-bar progress-bar-striped font-weight-bold bg-info" style="width: 10%">
                                           10%
                                         </div>
                                       </div></td>
                                 </tr>
-                              
+                               {% endfor %}
         
                                 
                             </tbody>
@@ -202,6 +209,8 @@
                             </tfoot>
                         </table>
                     </div>
+                   
+            {% endif %}
 
                 </div>
             </div>
