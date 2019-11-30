@@ -33,21 +33,23 @@
       <div class="collapse show" id="collapseSelector" data-parent="#myGroup">
         <div class="row justify-content-around align-items-center">
           <!---Task Card-->
+          {% if objtasks %}   
+        {% for tsobj  in objtasks %}
            <div class="col-xl-3 col-lg-4 col-sm-8 rotate">
      <!---Task Card section-->        
-        {% if objtasks %}   
+        
             <div class="card text-center mb-3 book-card mx-auto">
                 <div class="card-header">
                     <div>
                       <!-- Avatar -->
-    <img src="../../assets/images/pm-design.png" class="rounded-circle mr-3" height="80px" width="80px" alt="avatar">
+    <img src="{% static 'img/pm-design.png' %}" class="rounded-circle mr-3" height="80px" width="80px" alt="avatar">
 
                         <!-- Title -->
-                        <h4 class="card-title font-weight-bold mb-2">iNSTALL NEW vM pLATFORM</h4>
+                        <h4 class="card-title font-weight-bold mb-2">{{tsobj.task_title}}</h4>
                         <!-- Subtitle -->
                         <!---User asign to-->
-                        <i class="fas fa-user-circle" style="font-size:20px;"></i>   Task assign To: Tal Bar-Or </li>
-                        <p class="card-text"><i class="far fa-clock pr-2"></i>Task started at: 07/24/2019</p>
+                        <i class="fas fa-user-circle" style="font-size:20px;"></i>   Task assign To: {{tsobj.global_task_assign.first_name}} {{tsobj.global_task_assign.family_name}}</li>
+                        <p class="card-text"><i class="far fa-clock pr-2"></i>Task started at: {{tsobj.created_at | date:"M d, Y" }}</p>
                   
                       </div>
                 </div>
@@ -153,7 +155,8 @@
                 
               </div>
           </div>
-   <!---End of Task Card-->       
+   <!---End of Task Card-->  
+   {% endfor %}     
    {% endif %}
         </div>
       </div>
