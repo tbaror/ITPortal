@@ -181,7 +181,7 @@
                             <tbody>
                              {% for tsobj in objtasks %}
                                 <tr>
-                                    <td><i class="fas fa-layer-group"></i> <span class="badge badge-secondary"><a href="#">{{tsobj.task_title}}</a></span></td>
+                                    <td><i class="fas fa-layer-group fa-1x"></i> <span class="badge badge-secondary"><a href="#"><h6>{{tsobj.task_title}}</h6></a></span></td>
                                     <td><img class="rounded-circle" width="40" src="{{ tsobj.global_task_assign.profile_image.url }}" alt="{{rtasks.global_task_assign.username}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{tsobj.global_task_assign.first_name}} {{tsobj.global_task_assign.family_name}}">
                                     <span class="badge badge-dark">{{tsobj.global_task_assign.first_name}} {{tsobj.global_task_assign.family_name}}</span> </td>
                                     <td>{{tsobj.created_at}}</td>
@@ -189,7 +189,7 @@
                                     <td class="text-center"><button type="button" class="btn btn-success text-white">{{tsobj.get_task_status_display}}</button></td>
                                     <td><div class="progress mt-2" style="height: 20px">
                                         <div class="progress-bar progress-bar-striped font-weight-bold bg-info" style="width: 10%">
-                                          10%
+                                          {{tsobj.overall_precent_complete}}%
                                         </div>
                                       </div></td>
                                 </tr>
