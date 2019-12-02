@@ -32,7 +32,7 @@ class IndexView(TemplateView):
         context['active_tasks'] = MainTask.objects.filter(complete=False).count()
         #All oobjects main Task
         context['maintask'] = MainTask.objects.all()
-        context['usermaintask'] = UserProfile.objects.all()
+        context['usermaintask'] = MainTask.objects.prefetch_related('global_task_assign').all()
 
         
         
