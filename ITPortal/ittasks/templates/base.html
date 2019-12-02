@@ -124,33 +124,13 @@
                   <div class="row">
                   <!---Card content--> 
                   
+      <!---modal content-->
+      {% block modal %}
       
-                          <div class="card bg-light mb-3 ml-2 mt-3" style="max-width: 18rem;">
-                                  
-                                  <div class="card-body bg-white">
-                                          <img class="card-img-top img-circle rounded-circle mt-1" src="{% static 'img/tal.jpg' %}" alt="Card image cap">
-                                      
-                                    <h5 class="card-title text-center mt-3">Tal Bar-Or</h5>
-                                    <hr>
-                                    <small class="text-muted"><span><i class="fas fa-envelope text-dark"></i></span> Email:</small>
-                                    <h6>tbaror@dalet.com</h6>
-                                    <small class="text-muted p-t-30 db"><span><i class="fas fa-mobile-alt text-dark"></i></span> Mobile:</small>
-                                    <h6>+972 54-699-5611</h6>
-                                    <small class="text-muted p-t-30 db"><span><i class="fas fa-blender-phone text-dark"></i></span> Ms Teams:</small>
-                                    <h6><a href="https://teams.microsoft.com/_#/conversations/19:5cfd192a-3707-4c37-a713-ee1b3a854878_6d57a783-3155-4437-b5fd-a6b01217419d@unq.gbl.spaces?ctx=chat">Teams Link</a></h6>
-                                    <small class="text-muted p-t-30 db"><span><i class="fas fa-map-marker-alt text-dark"></i></span> Location:</small>
-                                    <h6>Haenrgia 77 Gav Yam, Beersheba, Israel</h6>
-                                  </div>
-                                  <div class="card-footer">
-                                      <div class="text-center">
-                                          <i class="fas fa-layer-group fa-2x p-2 ic1" data-toggle="tooltip" data-placement="top" title="Assigned Tickets"> 2</i>
-                                          <i class="fas fa-hourglass-half fa-2x p-2 ic2" data-toggle="tooltip" data-placement="top" title="Tasks Paused"> 3</i>
-                                          <i class="fas fa-tasks fa-2x p-2 ic3" data-toggle="tooltip" data-placement="top" title="Tasks Completed"> 4</i>
-                                      </div>
-                                  </div>
-                                </div>
       
-                                
+                          
+    {% endblock modal %} 
+    <!---end of modal content-->
                          <!---End of card content-->    
                       </div>     
                    <!---content here-->

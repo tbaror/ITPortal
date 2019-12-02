@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
-from .models import MainTask, ChildTask, User 
+from .models import MainTask, ChildTask, User, UserProfile 
 from datetime import date, datetime, timedelta
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -32,6 +32,7 @@ class IndexView(TemplateView):
         context['active_tasks'] = MainTask.objects.filter(complete=False).count()
         #All oobjects main Task
         context['maintask'] = MainTask.objects.all()
+        context['usermaintask'] = UserProfile.objects.all()
 
         
         
