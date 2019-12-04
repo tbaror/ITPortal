@@ -6,6 +6,7 @@ from datetime import date, datetime, timedelta
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.utils import timezone
+from django.db.models import Count
 
 
 # Create your views here.
@@ -32,7 +33,11 @@ class IndexView(TemplateView):
         context['active_tasks'] = MainTask.objects.filter(complete=False).count()
         #All oobjects main Task
         context['maintask'] = MainTask.objects.all()
-        context['usermaintask'] = MainTask.objects.prefetch_related('global_task_assign').all()
+        #IT Team
+        context['usermaintask'] = MainTask.objects.prefetch_related('global_task_assign').annotate(user_task=Count('global_task_assign'))
+        #context['countusr'] = MainTask.objects.values_list('global_task_assign')
+        context['usrmtsk'] = MainTask.objects.annotate(Count('global_task_assign'))
+        context['usrobj']=MainTask.objects.values('global_task_assign').annotate(num_tasks=Count('global_task_assign'))
 
         
         
