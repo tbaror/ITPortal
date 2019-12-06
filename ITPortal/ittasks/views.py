@@ -9,21 +9,8 @@ from django.utils import timezone
 from django.db.models import Count
 
 
-# Create your views here.
-def index(request):
-    return render(request ,'index.html', {})
 
 
-
-""" class HomePageView(ListView):
-
-    template_name = "index.html"
-    
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context = MainTask.objects.all()
-        return context """
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -34,10 +21,10 @@ class IndexView(TemplateView):
         #All oobjects main Task
         context['maintask'] = MainTask.objects.all()
         #IT Team
-        context['usermaintask'] = MainTask.objects.prefetch_related('global_task_assign').annotate(user_task=Count('global_task_assign'))
+        context['usermaintask'] = UserProfile.objects.all().annotate(user_task=Count('global_task_assign'))
         #context['countusr'] = MainTask.objects.values_list('global_task_assign')
-        context['usrmtsk'] = MainTask.objects.annotate(Count('global_task_assign'))
-        context['usrobj']=MainTask.objects.values('global_task_assign').annotate(num_tasks=Count('global_task_assign'))
+        context['usrmtsk'] = MainTask.objects.filter(complete=False).annotate(num_task=Count('global_task_assign')).annotate(ts_complete=Count('complete')).filter(complete=True)
+        context['usrobj']= UserProfile.objects.annotate(numtask=Count('global_task_assign'))
 
         
         
