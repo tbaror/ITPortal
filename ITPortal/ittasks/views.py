@@ -6,7 +6,7 @@ from datetime import date, datetime, timedelta
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.utils import timezone
-from django.db.models import Count
+from django.db.models import Count, Q
 
 
 
@@ -24,8 +24,8 @@ class IndexView(TemplateView):
         context['usermaintask'] = UserProfile.objects.all().annotate(user_task=Count('global_task_assign'))
         #context['countusr'] = MainTask.objects.values_list('global_task_assign')
         context['usrmtsk'] = MainTask.objects.filter(complete=False).annotate(num_task=Count('global_task_assign')).annotate(ts_complete=Count('complete')).filter(complete=True)
-        context['usrobj']= UserProfile.objects.annotate(numtask=Count('global_task_assign'))
-
+        #context['usrobj']= UserProfile.objects.annotate(numtask=Count('global_task_assign'))
+        context['usrobj'] = UserProfile.objects.filter(global_task_assign__task_status = "PA").annotate(complete=Count('global_task_assign__completed', filter=Q(global_task_assign__completed=True)), incomplete=Count('global_task_assign__completed', filter=Q(global_task_assign__completed=False)))
         
         
         #filter task due date
