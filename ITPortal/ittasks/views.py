@@ -25,10 +25,12 @@ class IndexView(TemplateView):
         #context['countusr'] = MainTask.objects.values_list('global_task_assign')
         context['usrmtsk'] = MainTask.objects.filter(complete=False).annotate(num_task=Count('global_task_assign')).annotate(ts_complete=Count('complete')).filter(complete=True)
         #context['usrobj']= UserProfile.objects.annotate(numtask=Count('global_task_assign'))
-        context['usrobj'] = UserProfile.objects.filter(global_task_assign__task_status = "PA").annotate(complete=Count('global_task_assign__completed'
-                           , filter=Q(global_task_assign__completed=True)), incomplete=Count('global_task_assign__completed'
-                           , filter=Q(global_task_assign__completed=False)))
-        
+        context['usrobj'] = UserProfile.objects.annotate(complete=Count('global_task_assign__complete'
+                           , filter=Q(global_task_assign__complete=True)), paused=Count('global_task_assign__task_status'
+                           , filter=Q(global_task_assign__task_status = "PA"))
+                           ,num_ts=Count('global_task_assign'))
+                           
+        #context['usrobj'] = UserProfile.objects.filter(global_task_assign__task_status = "PA").annotate(numtask=Count('global_task_assign'))
         
         #filter task due date
         #due_range = 
