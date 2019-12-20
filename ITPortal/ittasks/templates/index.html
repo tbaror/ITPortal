@@ -22,18 +22,18 @@
      
                                   
                                   <div class="card-body bg-white">
-                                          <img class="card-img-top img-circle rounded-circle mt-1" src="{% static 'img/tal.jpg' %}" alt="Card image cap">
+                                          <img class="card-img-top img-circle rounded-circle mt-1" src="{{usobj.profile_image.url}}" alt="Card image cap">
                                       
                                     <h5 class="card-title text-center mt-3">{{usobj.first_name}} {{usobj.family_name}}</h5>
                                     <hr>
                                     <small class="text-muted"><span><i class="fas fa-envelope text-dark"></i></span> Email:</small>
-                                    <h6>{{usrobj.task_assign.email}}</h6>
+                                    <h6>{{usobj.email}}</h6>
                                     <small class="text-muted p-t-30 db"><span><i class="fas fa-mobile-alt text-dark"></i></span> Mobile:</small>
-                                    <h6>+972 54-699-5611</h6>
+                                    <h6>{{usobj.mobile_phone}}</h6>
                                     <small class="text-muted p-t-30 db"><span><i class="fas fa-blender-phone text-dark"></i></span> Ms Teams:</small>
-                                    <h6><a href="https://teams.microsoft.com/_#/conversations/19:5cfd192a-3707-4c37-a713-ee1b3a854878_6d57a783-3155-4437-b5fd-a6b01217419d@unq.gbl.spaces?ctx=chat">Teams Link</a></h6>
+                                    <h6><a href="{{usobj.teams_link}}">Teams Link</a></h6>
                                     <small class="text-muted p-t-30 db"><span><i class="fas fa-map-marker-alt text-dark"></i></span> Location:</small>
-                                    <h6>Haenrgia 77 Gav Yam, Beersheba, Israel</h6>
+                                    <h6>{{usobj.user_location}}</h6>
                                   </div>
                                   <div class="card-footer">
                                       <div class="text-center">
