@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView
 from .models import MainTask, ChildTask, User, UserProfile 
 from datetime import date, datetime, timedelta
 from django.contrib import messages
@@ -70,3 +71,10 @@ class TaskView(TemplateView):
 
         context['objtasks'] = MainTask.objects.all()
         return context
+
+
+class CreatTaskView(CreateView):
+    model = MainTask
+
+    template_name = "create_newtask.html"
+    fields = ['task_title','global_task_info','due_date','global_task_assign','task_status']
