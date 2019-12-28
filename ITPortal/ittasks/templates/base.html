@@ -18,6 +18,9 @@
 
     <!--FonAwsom cdn-->
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!--DateTimePicker Plugin-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha256-kIxwtDqhOVbQysWu0OpR9QfijdXCfqvXgAUJuv7Uxmg=" crossorigin="anonymous" />
+    
 </head>
 
 <body>
@@ -202,6 +205,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!--Date Time Picker Plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -229,7 +234,18 @@
           $('#zero_config').DataTable();
       } );
     </script>
-<!--End task view script-->    
+<!--End task view script-->
+<!--date time picket script-->
+<script type="text/javascript">
+    $('#picker').datetimepicker({
+        timepicker: true,
+        datepicker: true,
+        
+        hours12: true,
+    })
+      
+</script>
+<!--end Date Time Picker-->
 </body>
 
 </html>

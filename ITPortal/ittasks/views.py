@@ -8,6 +8,8 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.utils import timezone
 from django.db.models import Count, Q
+from .forms import *
+from django.urls import reverse_lazy
 
 
 
@@ -77,4 +79,9 @@ class CreatTaskView(CreateView):
     model = MainTask
 
     template_name = "create_newtask.html"
-    fields = ['task_title','global_task_info','due_date','global_task_assign','task_status']
+    form_class = TaskCraetionForm
+    
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+

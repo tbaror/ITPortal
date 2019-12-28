@@ -1,17 +1,54 @@
 {% extends 'base.html' %}
-
+{% load static from static %}
 <{% block content %}
 
 
 
 
+    
+<div class="container">
+    <div class="col text-center py-5">
 
-<h1 class="">new task page</h1>
+
+
 
 <form action="" method="post">
+  <h2 class="mt-3">Create New Task</h2>
     {% csrf_token %}
+    <div class="input-group mt-3 mb-3 mr-auto">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-book-medical"></i></span>
+        </div>
+        {{ form.task_title}}
+      </div>
 
-    {{ form.as_p}}
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-pen"></i></span>
+        </div>
+        {{form.global_task_info}}
+      </div>
+
+     <!---date time picker-->
+     <h5>Task Due Date</h5>
+     <div class="input-group date mb-3">
+      {{ form.due_date }}
+      <div class="input-group-append">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div> 
+    <!--end of date time picker-->
+    <!---user assign-->
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fas fa-user-tie"></i></div>
+        
+        
+          {{form.global_task_assign}}
+        
+      </div>
 </form>
+</div>
+</div>
 
 {% endblock content %}
