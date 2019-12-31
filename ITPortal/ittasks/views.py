@@ -81,7 +81,6 @@ class CreatTaskView(CreateView):
     template_name = "create_newtask.html"
     form_class = TaskCraetionForm
     
-    def form_valid(self, form):
-        return super().form_valid(form)
+    
 
-
+    

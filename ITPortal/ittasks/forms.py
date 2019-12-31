@@ -1,5 +1,5 @@
 from django import forms
-from .models import MainTask
+from .models import MainTask, UserProfile, User
 
 
 class TaskCraetionForm(forms.ModelForm):
@@ -19,7 +19,7 @@ class TaskCraetionForm(forms.ModelForm):
             'class': 'form-control',
             'id': 'picker'
         }))
-    #global_task_assign = forms.ChoiceField(widget=forms.ChoiceField(attrs={'class':'form-control'}))
+    global_task_assign = forms.ModelChoiceField(queryset= UserProfile.objects.all(), widget=forms.Select(attrs={'class':'form-control'} ))
     task_status = forms.ChoiceField(label='', choices=TASK_STATUS_CHOICES, widget=forms.Select(attrs={'class':'form-control'}))
 
     class Meta:
