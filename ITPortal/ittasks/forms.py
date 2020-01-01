@@ -1,5 +1,6 @@
 from django import forms
 from .models import MainTask, UserProfile, User
+from django.urls import reverse
 
 
 class TaskCraetionForm(forms.ModelForm):
@@ -31,3 +32,6 @@ class TaskCraetionForm(forms.ModelForm):
             'task_status',
  
         ]
+
+        def get_absolute_url(self):
+            return reverse('author-detail', kwargs={'pk': self.pk})

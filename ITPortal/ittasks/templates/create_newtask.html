@@ -13,7 +13,9 @@
 
 
 <form action="" method="POST">
-  <h3 class="mt-3">Create New Task</h3>
+  <h3 class="mt-3 text-left">Create New Task</h3>
+  <hr>
+            <p class="text-muted text-left">Creat New Itom task</p>
     {% csrf_token %}
     <div class="input-group mt-3 mb-3 mr-auto">
         <div class="input-group-prepend">
@@ -32,10 +34,11 @@
      <!---date time picker-->
      <h6 class="text-left">Task Due Date</h6>
      <div class="input-group date mb-3 col-3">
-      {{ form.due_date }}
       <div class="input-group-append">
         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
       </div>
+      {{ form.due_date }}
+      
     </div> 
     <!--end of date time picker-->
     <!---user assign-->
@@ -61,8 +64,9 @@
       
     </div>
     
-
-    <button type="submit" class="btn btn-primary">Create Task</button>
+    <div class="col text-left">
+    <button type="submit" value="Save" class="btn btn-primary btn-lg text-white"><span><i class="fas fa-database"></i></span> Create Task</button>
+  </div>
 </form>
 </div>
 </div>

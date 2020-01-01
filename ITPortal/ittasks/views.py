@@ -80,6 +80,9 @@ class CreatTaskView(CreateView):
 
     template_name = "create_newtask.html"
     form_class = TaskCraetionForm
+    success_url = None
+    
+    
     
     
 
