@@ -80,7 +80,7 @@ class CreatTaskView(CreateView):
 
     template_name = "create_newtask.html"
     form_class = TaskCraetionForm
-    success_url = 'tasks_view'
+    success_url = reverse_lazy('task_view')
 
     
     
