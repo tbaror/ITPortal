@@ -12,11 +12,15 @@ class TaskCraetionForm(forms.ModelForm):
     ('PA', 'PAUSED'),
     ('CO', 'COMPLETED'),
     ]
-
+    INPUTֹTIMEֹFORMATS = ['%Y-%m-%d',      # '2006-10-25'
+'%m/%d/%Y',
+'%Y/%m/%d',       # '10/25/2006'
+'%Y/%m/%d %H:%M',
+'%m/%d/%y']       # '10/25/06'
     
     task_title = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Task Title'}))
     global_task_info = forms.CharField(max_length=500, widget=forms.Textarea(attrs={'class':'form-control','placeholder':'Task Description'}))
-    due_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={
+    due_date = forms.DateTimeField(input_formats=INPUTֹTIMEֹFORMATS, widget=forms.DateTimeInput(attrs={
             'class': 'form-control',
             'id': 'picker'
         }))
