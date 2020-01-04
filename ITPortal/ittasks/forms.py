@@ -37,5 +37,7 @@ class TaskCraetionForm(forms.ModelForm):
  
         ]
 
-        def get_absolute_url(self):
-            return reverse('author-detail', kwargs={'pk': self.pk})
+        
+
+class TaskUpdateForm(forms.ModelForm):
+    pass            

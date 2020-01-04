@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import path
-from ittasks.views import IndexView , TaskView, CreatTaskView
+from ittasks.views import IndexView , TaskView, CreatTaskView, LoaderPage
 
 # Create your views here.
 urlpatterns = [
@@ -9,5 +9,7 @@ urlpatterns = [
     path("task_view/", TaskView.as_view(), name="task_view"),
     path("create_task/", CreatTaskView.as_view(), name="create_task"),
     path("update_task/", CreatTaskView.as_view(), name="update_task"),
+    path("loader_page/", LoaderPage.as_view(), name="loader_page"),
+    
 
 ]

@@ -65,6 +65,9 @@ class IndexView(TemplateView):
 
         
         return context
+
+class LoaderPage(TemplateView):
+    template_name = 'loader_page.html'        
         
 class TaskView(TemplateView):
     template_name = "tasks_view.html"
@@ -80,7 +83,13 @@ class CreatTaskView(CreateView):
 
     template_name = "create_newtask.html"
     form_class = TaskCraetionForm
-    success_url = reverse_lazy('task_view')
+    success_url = reverse_lazy('loader_page')
+
+class UpdateTaskView(UpdateView):
+    model = MainTask
+    template_name = "update_task.html"
+    form_class = TaskUpdateForm
+    
 
     
     
