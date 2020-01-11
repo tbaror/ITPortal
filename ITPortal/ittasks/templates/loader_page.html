@@ -8,17 +8,23 @@
  <link href="{% static 'css/loader_page.css' %}" rel="stylesheet">
 
 <body >
-
+<div class="row">
+  <div class="container">
 
 <div class="loader"></div>
 
-<div class="container text-center"></div>
-
-<div style="display:none;" id="myDiv" class="animate-bottom">
-  <h2 class="text-center">Tada!</h2>
-  <p>Some text in my newly loaded page..</p>
+<div class="animate-bottom">
+  <h2>Task Create Successfully! <i class="fas fa-check"></i></h2>
+  <p>Tour new Task just Created..</p>
+</div>
+</div>
 </div>
 
+<script>
+        var timer = setTimeout(function() {
+            window.location='{% url 'index' %}'
+        }, 2990);
+    </script>
 
 
   {% endblock content %}
