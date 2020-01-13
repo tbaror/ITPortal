@@ -2,47 +2,86 @@
 {% load static from static %}
 <{% block content %}
 
+<!---CSS Bootstrap 4Table-->
+<link href="{% static 'css/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
 
 
 
     
-<div class="container">
-    <div class="col text-center py-5">
+<!---Content Data Table-->
+<div class="collapse" id="collapseSelector2" data-parent="#myGroup">
+	<div class="card card-body">
+		<!---Table content-->
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Tasks Datatable</h5>
+		{% if objtasks %}
+	   
+				<div class="table-responsive">
+					<table id="zero_config" class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>Task Name</th>
+								<th>Person Assign</th>
+								<th>Date Sterted</th>
+								<th>Due Date</th>
+								<th>Status</th>
+								<th>Completed</th>
+							</tr>
+						</thead>
+						<tbody>
+						 {% for tsobj in objtasks %}
+							<tr>
+								<td><i class="fas fa-layer-group fa-1x"></i> <span class="badge badge-secondary"><a href="#"><h6>{{tsobj.task_title}}</h6></a></span></td>
+								<td><img class="rounded-circle" width="40" src="{{ tsobj.global_task_assign.profile_image.url }}" alt="{{rtasks.global_task_assign.username}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{tsobj.global_task_assign.first_name}} {{tsobj.global_task_assign.family_name}}">
+								<span class="badge badge-dark">{{tsobj.global_task_assign.first_name}} {{tsobj.global_task_assign.family_name}}</span> </td>
+								<td>{{tsobj.created_at}}</td>
+								<td>{{tsobj.due_date}}</td>
+								<!--Task status condition-->
+								{% if tsobj.get_task_status_display == 'STARTED' or tsobj.get_task_status_display == 'IN PROGRESS' %}
+								 <td class="text-center"><button type="button" class="btn btn-primary btn-sm text-white">{{tsobj.get_task_status_display}}</button></td>
+								{% elif tsobj.get_task_status_display == 'NOT STARTED' %}
+								  <td class="text-center"><button type="button" class="btn btn-warning text-white">{{tsobj.get_task_status_display}}</button></td>
+								{% elif tsobj.get_task_status_display == 'PAUSED' %}
+								  <td class="text-center"><button type="button" class="btn btn-danger text-white">{{tsobj.get_task_status_display}}</button></td>
+								{% elif tsobj.get_task_status_display == 'COMPLETED' %}
+								  <td class="text-center"><button type="button" class="btn btn-success text-white">{{tsobj.get_task_status_display}}</button></td>  
+								{% endif %}
+								<!--End Task status condition-->
+							   
+								<td><div class="progress mt-2" style="height: 20px">
+									<div class="progress-bar progress-bar-striped font-weight-bold bg-info" style="width: {{tsobj.overall_precent_complete}}%">
+									  {{tsobj.overall_precent_complete}}%
+									</div>
+								  </div></td>
+							</tr>
+						   {% endfor %}
+	
+							
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>Task Name</th>
+								<th>Person Assign</th>
+								<th>Date Sterted</th>
+								<th>Due Date</th>
+								<th>Status</th>
+								<th>Completed</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			   
+		{% endif %}
 
-
-
-
-
-
-
-<form action="" method="POST">
-
-  <h3 class="mt-3 text-left">Update Task</h3>
-  <hr>
-            <p class="text-muted text-left">Update Youre ITOM Task</p>
-    {% csrf_token %}
-    {% if form.errors %}
-	<!-- Error messaging -->
-	<div id="errors">
-		<div class="inner">
-			<p>There were some errors in the information you entered. Please correct the following:</p>
-			<ul>
-				{% for field in form %}
-					{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
-				{% endfor %}
-			</ul>
+			</div>
 		</div>
+		<!---End of Table Content -->
 	</div>
-	<!-- /Error messaging -->
-{% endif %}
-<!--End Of Error form handaling-->
-    
-    <div class="col text-left">
-    <button type="submit" value="Save" class="btn btn-primary btn-lg text-white mt-2"><span><i class="fas fa-database"></i></span> Create Task</button>
-  </div>
-  
-</form>
 </div>
+ <!---End content Table-->
 </div>
+
 
 {% endblock content %}

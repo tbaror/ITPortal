@@ -67,7 +67,11 @@ class IndexView(TemplateView):
         return context
 
 class LoaderPage(TemplateView):
-    template_name = 'loader_page.html'        
+    template_name = 'loader_page.html'
+    def get_context_data(self, **kwargs):
+        context = super(LoaderPage, self).get_context_data(**kwargs)
+        context ['lobj'] = MainTask.objects.all()[:1]
+              
         
 class TaskView(TemplateView):
     template_name = "tasks_view.html"
