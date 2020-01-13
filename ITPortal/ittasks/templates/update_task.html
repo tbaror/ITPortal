@@ -47,15 +47,15 @@
 								{% if tsobj.get_task_status_display == 'STARTED' or tsobj.get_task_status_display == 'IN PROGRESS' %}
 								 <td class="text-center"><button type="button" class="btn btn-primary btn-sm text-white">{{tsobj.get_task_status_display}}</button></td>
 								{% elif tsobj.get_task_status_display == 'NOT STARTED' %}
-								  <td class="text-center"><button type="button" class="btn btn-warning text-white">{{tsobj.get_task_status_display}}</button></td>
+								  <td class="text-center"><button type="button" class="btn btn-warning btn-sm text-white">{{tsobj.get_task_status_display}}</button></td>
 								{% elif tsobj.get_task_status_display == 'PAUSED' %}
-								  <td class="text-center"><button type="button" class="btn btn-danger text-white">{{tsobj.get_task_status_display}}</button></td>
+								  <td class="text-center"><button type="button" class="btn btn-danger btn-sm text-white">{{tsobj.get_task_status_display}}</button></td>
 								{% elif tsobj.get_task_status_display == 'COMPLETED' %}
-								  <td class="text-center"><button type="button" class="btn btn-success text-white">{{tsobj.get_task_status_display}}</button></td>  
+								  <td class="text-center"><button type="button" class="btn btn-success btn-sm text-white">{{tsobj.get_task_status_display}}</button></td>  
 								{% endif %}
 								<!--End Task status condition-->
 							   
-								<td><a href="http://"><span><i class="fas fa-trash-alt fa-2x text-danger"></i></span></a>    <a href="http://">  <span class="ml-2"><i class="far fa-edit fa-2x text-success"></i></span></a></td>
+								<td><a href="http://"><span data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete {{tsobj.task_title}}"><i class="fas fa-trash-alt fa-2x text-danger"></i></span></a>    <a href="http://">  <span class="ml-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update {{tsobj.task_title}}" ><i class="far fa-edit fa-2x text-success"></i></span></a></td>
 							</tr>
 						   {% endfor %}
 	
