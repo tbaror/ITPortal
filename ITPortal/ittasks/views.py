@@ -89,10 +89,17 @@ class CreatTaskView(CreateView):
     form_class = TaskCraetionForm
     success_url = reverse_lazy('loader_page')
 
-class UpdateTaskView(UpdateView):
-    model = MainTask
+class UpdateListTaskView(TemplateView):
+    #model = MainTask
     template_name = "update_task.html"
-    form_class = TaskUpdateForm
+    #form_class = TaskUpdateForm
+
+    def get_context_data(self, **kwargs):
+            context = super(UpdateListTaskView, self).get_context_data(**kwargs)
+            #current tasks
+            context['cur_tasks'] = MainTask.objects.filter(complete=False)
+            return context
+
     
 
     
