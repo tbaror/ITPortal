@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm, Textarea, TextInput
 from .models import MainTask, UserProfile, User
 from django.urls import reverse
 
@@ -39,5 +40,20 @@ class TaskCraetionForm(forms.ModelForm):
 
         
 
-class TaskUpdateForm(forms.ModelForm):
-    pass            
+class TaskUpdateForm(ModelForm):
+    class  Meta:
+        model = MainTask
+        fields = ['task_title',
+            'global_task_info',
+            'due_date',
+            'global_task_assign',
+            'task_status',
+            'complete',
+            'overall_precent_complete',
+            'task_location',
+            'global_task_assign',
+            'task_status',]
+
+        widgets = {
+            'task_title': TextInput(attrs={'class':'form-control'}),
+        }              

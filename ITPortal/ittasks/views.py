@@ -100,10 +100,12 @@ class UpdateListTaskView(TemplateView):
             context['cur_tasks'] = MainTask.objects.filter(complete=False)
             return context
 
-    
+class TaskIdUpdateView(UpdateView):
+    model = MainTask
+    template_name = "taskid_update.html"
+    form_class = TaskUpdateForm
+    fields = '__all__'
 
-    
-    
         
         
     

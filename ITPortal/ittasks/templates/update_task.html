@@ -55,7 +55,7 @@
 								{% endif %}
 								<!--End Task status condition-->
 							   
-								<td><a href="http://"><span data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete {{tsobj.task_title}}"><i class="fas fa-trash-alt fa-2x text-danger"></i></span></a>    <a href="http://">  <span class="ml-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update {{tsobj.task_title}}" ><i class="far fa-edit fa-2x text-success"></i></span></a></td>
+								<td><a href="http://"><span data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete {{tsobj.task_title}}"><i class="fas fa-trash-alt fa-1x text-danger"></i></span></a>    <a href="{% url 'taskid_update' tsobj.pk %}">  <span class="ml-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update {{tsobj.task_title}}" ><i class="far fa-edit fa-1x text-success"></i></span></a></td>
 							</tr>
 						   {% endfor %}
 	
