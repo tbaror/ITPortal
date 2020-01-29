@@ -71,7 +71,7 @@ class TaskUpdateForm(ModelForm):
     global_task_assign = forms.ModelChoiceField(queryset= UserProfile.objects.all(), widget=forms.Select(attrs={'class':'form-control'} ))
     task_status = forms.ChoiceField(label='', choices=TASK_STATUS_CHOICES, widget=forms.Select(attrs={'class':'form-control'}))
     complete = forms.BooleanField( required=False, widget=forms.CheckboxInput(attrs={'type':'checkbox', 'class':'custom-control-input', 'id':'switchcomplete'}))
-    overall_precent_complete = forms.IntegerField(widget=(forms.NumberInput(attrs={'type':'range', 'min':'1', 'max':'100', 'value':'50', 'class':'slider', 'id':'PreRange'})))
+    overall_precent_complete = forms.IntegerField(widget=(forms.NumberInput(attrs={'type':'range', 'min':'0', 'max':'100', 'value':'50', 'class':'range-slider__range', 'id':'PreRange'})))
     task_location = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
 
     #Child Tasks objects

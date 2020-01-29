@@ -4,6 +4,8 @@
 
 
 {% block content %}
+<!--accordion css-->
+<link href="{% static 'css/range.css' %}" rel="stylesheet">
 <div class="conatainer">
 
     <div class="col text-center py-5">
@@ -92,6 +94,12 @@
       
     </div>
     
+    <div class="range-slider mb-4">
+        <h6 class="text-left">Set Task Global Progress</h6>
+        {{form.overall_precent_complete}}
+        <span class="range-slider__value">0</span>
+      </div>
+    
     <div class="col text-left">
     <button type="submit" value="Save" class="btn btn-primary btn-lg text-white mt-2"><span><i class="fas fa-database"></i></span> Create Task</button>
   </div>
@@ -99,4 +107,5 @@
     </div>
 
 </div>
+
 {% endblock content %}
