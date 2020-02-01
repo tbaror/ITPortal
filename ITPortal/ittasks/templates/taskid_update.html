@@ -103,8 +103,15 @@
     	<h4 class="mt-3 text-left">SubTask Section </h4>
   <hr>
   <!---subtask section-->
+  {{ taskidformset.task_description }}
   <div id="accordion">
-    {{formset.task_description }}
+  {{ taskidformset.management_form }}
+  {{ taskidformset.non_form_errors }}
+    <table>
+        {% for stask in forms.taskidformset %}
+        {{stask.task_description}}
+        {% endfor %}
+    
     
     
     <div class="card">

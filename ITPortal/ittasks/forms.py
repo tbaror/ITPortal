@@ -48,18 +48,18 @@ class TaskCraetionForm(forms.ModelForm):
 class TaskUpdateForm(ModelForm):
 
     TASK_STATUS_CHOICES = [
-    ('ST', 'STARTED'),
-    ('NS', 'NOT STARTED'),
-    ('IP', 'IN PROGRESS'),
-    ('PA', 'PAUSED'),
-    ('CO', 'COMPLETED'),
-    ]
+        ('ST', 'STARTED'),
+        ('NS', 'NOT STARTED'),
+        ('IP', 'IN PROGRESS'),
+        ('PA', 'PAUSED'),
+        ('CO', 'COMPLETED'),
+        ]
     INPUTֹTIMEֹFORMATS = ['%Y-%m-%d',      # '2006-10-25'
-'%m/%d/%Y',
-'%Y/%m/%d',       # '10/25/2006'
-'%Y/%m/%d %H:%M',
-'%m/%d/%y',
-'%Y-%m-%d %H:%M:%S']       # '10/25/06'
+        '%m/%d/%Y',
+        '%Y/%m/%d',       # '10/25/2006'
+        '%Y/%m/%d %H:%M',
+        '%m/%d/%y',
+        '%Y-%m-%d %H:%M:%S']       # '10/25/06'
 
     #Main Task objects
     task_title = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Task Title'}))
@@ -85,13 +85,9 @@ class TaskUpdateForm(ModelForm):
             'id': 'picker'
         }))
     task_assign = forms.ModelChoiceField(queryset= UserProfile.objects.all(), widget=forms.Select(attrs={'class':'form-control'} ))    
-    
-    
-
-    
+      
     class  Meta:
-        
-        
+
         model = MainTask
         fields = ['task_title',
             'global_task_info',
@@ -103,7 +99,6 @@ class TaskUpdateForm(ModelForm):
             'task_location',
             'global_task_assign',
             'task_status',]
-
 
         taskidformset = inlineformset_factory(MainTask,ChildTask, fields=('task_description','task_info','task_complete',
     'sub_task','task_precent_complete','task_due_date','task_assign'))
