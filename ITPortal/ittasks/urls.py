@@ -11,6 +11,8 @@ urlpatterns = [
     path("update_task/", UpdateListTaskView.as_view(), name="update_task"),
     path("loader_page/", LoaderPage.as_view(), name="loader_page"),
     path("<int:pk>/", TaskIdUpdateView.as_view(), name="taskid_update"),
+    path("<maintask_id>/", view., name="taskid_update"),
+
 
     
 

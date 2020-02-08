@@ -102,10 +102,27 @@ class UpdateListTaskView(TemplateView):
             return context
 
 class TaskIdUpdateView(UpdateView):
+    maintask = MainTask.objects.get(id)
     taskidformset = inlineformset_factory(MainTask,ChildTask, fields=('task_description','task_info','task_complete',
     'sub_task','task_precent_complete','task_due_date','task_assign'))
     model = MainTask
     template_name = "taskid_update.html"
+    formset = taskidformset(instance=maintask)
     form_class = TaskUpdateForm
+
+
+def task_id_update(request, maintask_id):
+    maintask_proc = MainTask.objects.get(pk=maintask_id)
+    SubTaskFormset = inlineformset_factory(MainTask,ChildTask, fields=('task_description','task_info','task_complete',
+    'sub_task','task_precent_complete','task_due_date','task_assign',))
+    if request.method == 'POST':
+        formset = SubTaskFormset(request.POST, instance=maintask_proc)
+        if formset.is_valid():
+            instances = formset.save(commit=False)
+            for instance in instances:
+                instance.maintask_id = maintask_id
+                instance.save()
+            
+            return request("taskid_update.html", maintask_id= maintask_proc.id )
 
     
