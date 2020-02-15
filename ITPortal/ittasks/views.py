@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
@@ -100,29 +100,48 @@ class UpdateListTaskView(TemplateView):
             #current tasks
             context['cur_tasks'] = MainTask.objects.filter(complete=False)
             return context
-
+#Update Main Task  form
 class TaskIdUpdateView(UpdateView):
-    maintask = MainTask.objects.get(id)
+    
+    
+    model = MainTask
+    template_name = "taskid_update.html"
+    form_class = TaskUpdateForm
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskIdUpdateView, self).get_context_data(**kwargs)
+
+        context['objtasks'] = MainTask.objects.filter(complete=False)
+        return context
+
+#Update Sub Task form
+class SubTaskUpdateView(UpdateView):
+    model = MainTask
+    template_name = ".html"
+    
+
+
+""" class TaskIdUpdateView(UpdateView):
+    #maintask = MainTask.objects.get(id)
     taskidformset = inlineformset_factory(MainTask,ChildTask, fields=('task_description','task_info','task_complete',
     'sub_task','task_precent_complete','task_due_date','task_assign'))
     model = MainTask
     template_name = "taskid_update.html"
-    formset = taskidformset(instance=maintask)
-    form_class = TaskUpdateForm
+    #formset = taskidformset(instance=maintask)
+    form_class = TaskUpdateForm    
+ """
 
-
-def task_id_update(request, maintask_id):
+""" def task_id_update(request, maintask_id):
     maintask_proc = MainTask.objects.get(pk=maintask_id)
     SubTaskFormset = inlineformset_factory(MainTask,ChildTask, fields=('task_description','task_info','task_complete',
     'sub_task','task_precent_complete','task_due_date','task_assign',))
     if request.method == 'POST':
         formset = SubTaskFormset(request.POST, instance=maintask_proc)
         if formset.is_valid():
-            instances = formset.save(commit=False)
-            for instance in instances:
-                instance.maintask_id = maintask_id
-                instance.save()
+            formset.save()
+            return redirect('taskpk_update', programmer_id=programmer.id)
             
-            return request("taskid_update.html", maintask_id= maintask_proc.id )
+    formset = SubTaskFormset(instance=maintask_proc)
+    return render(request, "taskpk_update.html", {'formset':formset}) """
 
     

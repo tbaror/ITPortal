@@ -1,0 +1,78 @@
+% extends 'base.html' %}
+{% load static from static %}
+<{% block content %}
+
+
+
+ <div class="card">
+         <div class="card-body">
+             <h4 class="page-title card-title">Recent Tasks</h4>
+         </div>
+         <div class="comment-widgets ">
+             <!-- Comment Row -->
+             <!---Recent Tasks-->
+      <div class="accordion" id="accordionExample">
+    <!--/*start django code*/ -->
+    {% if objtasks %}
+                        
+    
+    {% for rtasks in objtasks %}
+    
+        
+         <div class="card m-b-0">
+             <div class="card-header" id="heading-{{ rtasks.id }}">
+               <h5 class="mb-0">
+                 <a class="artasks" data-toggle="collapse" data-target="#collapse-{{ rtasks.id }}" aria-expanded="true" aria-controls="collapse-{{ rtasks.id }}">
+                     <i class="m-r-5 fas fa-th-list" aria-hidden="true"></i>
+                     <span>{{rtasks.task_title}}</span>
+                 </a>
+               </h5>
+             </div>
+             <div id="collapse-{{ rtasks.id }}" class="collapse" aria-labelledby="heading-{{ rtasks.id }}" data-parent="#accordionExample">
+               <div class="card-body">
+              
+                                 <span class="todo-desc">{{rtasks.task_title}}</span> <span class="badge badge-pill badge-danger float-right">{{ current_time|timeuntil:rtasks.created_at }}</span>
+              
+                     <ul class="list-inline">
+                              <li class="assignee list-inline-item">Global Task Assign To:</li>
+                             <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="{{ rtasks.global_task_assign.profile_image.url }}" alt="{{rtasks.global_task_assign.username}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{rtasks.global_task_assign.first_name}} {{rtasks.global_task_assign.family_name}}"></li>
+                      </ul>    
+                       <ul class="list-inline">  
+                          <li class="assignee list-inline-item">Sub Task Assign To:</li> 
+                            {% for usr in rtasks.item_main.all %}
+                              <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="{{usr.task_assign.profile_image.url }}" alt="{{usr.task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{usr.task_assign.first_name}} {{usr.task_assign.family_name}}"></li>
+                              
+                             {% endfor %}
+                            
+                         </ul>
+                          {{rtasks.global_task_info}}
+                 <div class="d-flex no-block align-items-center m-t-25">
+                         <span> <strong>{{rtasks.overall_precent_complete}}%</strong>  Global Progress</span>
+                         <div class="ml-auto">
+                             <span>100%</span>
+                         </div>
+                     </div>
+                     <div class="progress">
+                         <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{rtasks.overall_precent_complete}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                     </div>
+                <div class="comment-footer mt-3">
+                         <span class="text-muted float-right">Due Date: {{ rtasks.due_date| date:"M d, Y" }}</span> 
+                         <button type="button" class="btn btn-cyan btn-sm">View task</button>
+                         <button type="button" class="btn btn-success btn-sm">Updtae Task</button>
+                         <button type="button" class="btn btn-danger btn-sm">Delete Task</button>
+                     </div>     
+               </div>
+             </div>
+         </div>
+        {% endfor %}    
+          {% endif %} 
+          
+         </div>
+     </div>
+   
+             <!---End OF Recent Tasks objects-->
+
+             
+             
+             
+         </div>
