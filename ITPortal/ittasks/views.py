@@ -111,13 +111,13 @@ class TaskIdUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(TaskIdUpdateView, self).get_context_data(**kwargs)
 
-        context['objtasks'] = MainTask.objects.filter(complete=False)
+        context['objtasks'] = self.get_object
         return context
 
 #Update Sub Task form
 class SubTaskUpdateView(UpdateView):
     model = MainTask
-    template_name = ".html"
+    template_name = "subtask_id_update.html"
     
 
 

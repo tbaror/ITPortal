@@ -108,10 +108,10 @@
   {{ taskidformset.management_form }}
   {{ taskidformset.non_form_errors }}
     <table>
-        {% for stask in forms.taskidformset %}
-        {{stask.task_description}}
+        {% for objts in objtasks.item_main.all %}
+        {{objts.task_description}}
         {% endfor %}
-    
+      {{objtasks}}
     
     
     <div class="card">
@@ -129,6 +129,8 @@
    
    
   </div>
+
+  
   <!---End subtask section-->
     <div class="col text-left">
     <button type="submit" value="Save" class="btn btn-primary btn-lg text-white mt-2"><span><i class="fas fa-database"></i></span> Create Task</button>
