@@ -113,13 +113,13 @@
     
     
     <div class="card">
-      <div class="card-header text-left bg-secondary">
-        <a class="card-link" data-toggle="collapse" href="#collapse-{{ objts.id }}" aria-expanded="true" aria-controls="collapse-{{ objts.id }}">
-          <i class="m-r-5 fas fa-th-list" aria-hidden="true"></i>
-                     <span>{{objts.task_description}}</span>
+      <div class="card-header text-left id="heading-{{ objts.id }}">
+        <a class="" data-toggle="collapse" href="#collapse-{{ objts.id }}" aria-expanded="true" aria-controls="collapse-{{ objts.id }}">
+          
+                     <span><i class="m-r-5 fas fa-th-list text-dark" aria-hidden="true"></i>{{objts.task_description}}</span>
       </div>
-      <div id="collapseOne" class="collapse show" data-parent="#accordion">
-        <div class="card-body">
+      <div id="collapse-{{ objts.id }}" class="collapse show" data-parent="#accordion">
+        <div class="card-body bg-light">
           
         </div>
       </div>
@@ -131,7 +131,7 @@
   
   <!---End subtask section-->
     <div class="col text-left">
-    <button type="submit" value="Save" class="btn btn-primary btn-lg text-white mt-2"><span><i class="fas fa-database"></i></span> Create Task</button>
+    <button type="submit" value="Save" class="btn btn-lg btn-primary text-white mt-2"><span><i class="fas fa-stream"></i></span> Update Task</button>
   </div>
         
     </div>
