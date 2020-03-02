@@ -162,7 +162,7 @@
          <div class="comment-widgets ">
              <!-- Comment Row -->
              <!---Recent Tasks-->
-      <div class="accordion" id="accordionExample">
+      <div class="accordion" id="accordionDrop">
     <!--/*start django code*/ -->
     {% if recent_task %}
                         
@@ -179,7 +179,7 @@
                  </a>
                </h5>
              </div>
-             <div id="collapse-{{ rtasks.id }}" class="collapse" aria-labelledby="heading-{{ rtasks.id }}" data-parent="#accordionExample">
+             <div id="collapse-{{ rtasks.id }}" class="collapse" aria-labelledby="heading-{{ rtasks.id }}" data-parent="#accordionDrop">
                <div class="card-body">
               
                                  <span class="todo-desc">{{rtasks.task_title}}</span> <span class="badge badge-pill badge-danger float-right">{{ current_time|timeuntil:rtasks.created_at }}</span>
