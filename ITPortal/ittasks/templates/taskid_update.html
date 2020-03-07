@@ -106,7 +106,7 @@
   
   <!---new card -->
   {% if objtasks.item_main.all %}  
-  <div class="accordion" id="accordionExample">
+  <div class="accordion container-fluid" id="accordionExample">
     {% for objts in objtasks.item_main.all %}
   <div class="card">
     <div class="card-header" id="heading-{{ objts.id }}">
@@ -120,13 +120,19 @@
 
     <div id="collapse-{{ objts.id }}" class="collapse show" aria-labelledby="heading-{{ objts.id }}" data-parent="#accordionExample">
       <div class="card-body">
-        <ul class="list-inline float-left">
-          <li class="assignee list-inline-item text-dark">Task Assign To:</li> 
+        <h6><span class="mb-2">{{objts.task_description}} Created: <i class="far fa-calendar-alt text-dark"></i></span> <span class="badge badge-pill badge-danger ">{{ current_time|timeuntil:objts.task_created }}</span></h6>
+        
+        <h6 class="float-left mb-2">Task Assign To:
                           
-              <li class="assignee list-inline-item"><img class="rounded-circle" width="40" src="{{objts.task_assign.profile_image.url }}" alt="{{objts.task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{objts.task_assign.first_name}} {{objts.task_assign.family_name}}"></li>
-                            
-                           
+              <img class="rounded-circle" width="40" src="{{objts.task_assign.profile_image.url }}" alt="{{objts.task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{objts.task_assign.first_name}} {{objts.task_assign.family_name}}"></li>                           
+            </h6>
+        
+        
+        <h6 class="mt-3 float-left">{{objts.task_info}}></h6> 
         </ul>
+      
+        
+    
       </div>
     </div>
   </div>
@@ -134,6 +140,7 @@
   {% endfor %}
 </div>
 {% endif %}
+
   <!--- end new card-->
 
 

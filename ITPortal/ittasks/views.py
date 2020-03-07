@@ -99,6 +99,9 @@ class UpdateListTaskView(TemplateView):
             context = super(UpdateListTaskView, self).get_context_data(**kwargs)
             #current tasks
             context['cur_tasks'] = MainTask.objects.filter(complete=False)
+            #Current date time
+            now = timezone.now()
+            context['current_time'] = now
             return context
 #Update Main Task  form
 class TaskIdUpdateView(UpdateView):
@@ -112,6 +115,8 @@ class TaskIdUpdateView(UpdateView):
         context = super(TaskIdUpdateView, self).get_context_data(**kwargs)
 
         context['objtasks'] = self.get_object
+        now = timezone.now()
+        context['current_time'] = now
         return context
 
 #Update Sub Task form
