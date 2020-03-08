@@ -119,17 +119,17 @@
     </div>
 
     <div id="collapse-{{ objts.id }}" class="collapse show" aria-labelledby="heading-{{ objts.id }}" data-parent="#accordionExample">
-      <div class="card-body">
-        <h6><span class="mb-2">{{objts.task_description}} Created: <i class="far fa-calendar-alt text-dark"></i></span> <span class="badge badge-pill badge-danger ">{{ current_time|timeuntil:objts.task_created }}</span></h6>
+      <div class="card-body text-left">
+        <h6 class="float-right"<span class="mb-2">{{objts.task_description}} Created: <i class="far fa-calendar-alt text-dark"></i></span> <span class="badge badge-pill badge-danger ">{{ current_time|timeuntil:objts.task_created }}</span></h6>
         
-        <h6 class="float-left mb-2">Task Assign To:
+        <h6 class="mb-2">Task Assign To:
                           
-              <img class="rounded-circle" width="40" src="{{objts.task_assign.profile_image.url }}" alt="{{objts.task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{objts.task_assign.first_name}} {{objts.task_assign.family_name}}"></li>                           
+              <img class="rounded-circle" width="40" src="{{objts.task_assign.profile_image.url }}" alt="{{objts.task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{objts.task_assign.first_name}} {{objts.task_assign.family_name}}">                         
             </h6>
         
         
-        <h6 class="mt-3 float-left">{{objts.task_info}}></h6> 
-        </ul>
+        <h6 class="mt-3">{{objts.task_info}}></h6> 
+        
       
         
     
