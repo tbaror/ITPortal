@@ -122,17 +122,31 @@
       <div class="card-body text-left">
         <h6 class="float-right"<span class="mb-2">{{objts.task_description}} Created: <i class="far fa-calendar-alt text-dark"></i></span> <span class="badge badge-pill badge-danger ">{{ current_time|timeuntil:objts.task_created }}</span></h6>
         
-        <h6 class="mb-2">Task Assign To:
+        <h6 class="mb-2"><span><i class="far fa-user"></i></span> Task Assign To:
                           
               <img class="rounded-circle" width="40" src="{{objts.task_assign.profile_image.url }}" alt="{{objts.task_assign}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{objts.task_assign.first_name}} {{objts.task_assign.family_name}}">                         
             </h6>
+            <hr>
         
-        
-        <h6 class="mt-3">{{objts.task_info}}></h6> 
-        
+        <h6 class="mt-3"><span><i class="far fa-file-alt"></i>Task Decription: </span> {{objts.task_info}}</h6>
+
+        <div class="d-flex no-block align-items-center m-t-25">
+          <span> <strong>{{objts.task_precent_complete}}%</strong>  Task Progress</span>
+          <div class="ml-auto">
+              <span>100%</span>
+          </div>
+      </div>
+      <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{objts.task_precent_complete}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
       
-        
+      <h6 class="card-text mt-3"><i class="fas fa-hourglass-half"></i> Task Over Due at: {{objts.task_due_date | date:"M d, Y" }}</h6>
     
+      <div class="comment-footer mt-3">
+        
+        <button type="button" class="btn btn-success btn-sm">Updtae Task</button>
+        <button type="button" class="btn btn-danger btn-sm">Delete Task</button>
+    </div> 
       </div>
     </div>
   </div>
