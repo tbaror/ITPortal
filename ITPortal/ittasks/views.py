@@ -10,7 +10,7 @@ from django.utils import timezone
 from django.db.models import Count, Q
 from .forms import *
 from django.urls import reverse_lazy
-from django.forms import inlineformset_factory
+from django.forms import inlineformset_factory, modelformset_factory
 
 
 
@@ -123,7 +123,12 @@ class TaskIdUpdateView(UpdateView):
 class SubTaskUpdateView(UpdateView):
     model = MainTask
     template_name = "subtask_id_update.html"
-    
+
+#Update SubtaskID     
+class SubTaskIdUpdateView(UpdateView):
+    model = ChildTask
+    SubTaskFormset = modelformset_factory(ChildTask, fields=('task_description', 'task_info','task_complete','sub_task', 
+    'task_precent_complete','task_updated_at', 'task_due_date',))
 
 
 """ class TaskIdUpdateView(UpdateView):

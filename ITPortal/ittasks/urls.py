@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import path
-from ittasks.views import IndexView , TaskView, CreatTaskView, LoaderPage, UpdateListTaskView, TaskIdUpdateView
+from ittasks.views import IndexView , TaskView, CreatTaskView, LoaderPage, UpdateListTaskView, TaskIdUpdateView, SubTaskIdUpdateView
 from . import views
 
 # Create your views here.
